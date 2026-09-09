@@ -425,7 +425,7 @@
         <h2>🛍️ Cửa Hàng Tiểu Bạch</h2>
         <button class="btn btn-dark" onclick="closeShop()">✕ Đóng</button>
       </div>
-      <p style="margin-top: 5px; font-size: 0.88rem;">Dùng Xu 🪙 mua đồ ăn cho Tiểu Bạch nhé!</p>
+      <p style="margin-top: 5px; font-size: 0.88rem;">Dùng Xu 🪙 mua đồ ăn & quà cho Tiểu Bạch nhé!</p>
 
       <div class="shop-grid">
         <div class="shop-item">
@@ -451,6 +451,43 @@
           <div class="shop-item-title">Trà Xanh Thanh Mát</div>
           <div class="shop-item-price">15 Xu (+15 No/Vui)</div>
           <button class="btn btn-green" onclick="buyFood('tea', 15, 15)">Mua 🍵</button>
+        </div>
+        <!-- VẬT PHẨM MỚI BỔ SUNG -->
+        <div class="shop-item">
+          <div class="shop-item-icon">🍜</div>
+          <div class="shop-item-title">Mì Ramen Nóng Hổi</div>
+          <div class="shop-item-price">35 Xu (+40 No)</div>
+          <button class="btn btn-green" onclick="buyFood('ramen', 35, 40)">Mua 🍜</button>
+        </div>
+        <div class="shop-item">
+          <div class="shop-item-icon">🍓</div>
+          <div class="shop-item-title">Bánh Kem Dâu</div>
+          <div class="shop-item-price">25 Xu (+15 No)</div>
+          <button class="btn btn-green" onclick="buyFood('cake', 25, 15)">Mua 🍓</button>
+        </div>
+        <div class="shop-item">
+          <div class="shop-item-icon">🧋</div>
+          <div class="shop-item-title">Trà Sữa Trân Châu</div>
+          <div class="shop-item-price">20 Xu (+10 No)</div>
+          <button class="btn btn-green" onclick="buyFood('milktea', 20, 10)">Mua 🧋</button>
+        </div>
+        <div class="shop-item">
+          <div class="shop-item-icon">🍎</div>
+          <div class="shop-item-title">Táo Đỏ Ngọt Lành</div>
+          <div class="shop-item-price">10 Xu (+12 No)</div>
+          <button class="btn btn-green" onclick="buyFood('apple', 10, 12)">Mua 🍎</button>
+        </div>
+        <div class="shop-item">
+          <div class="shop-item-icon">🎾</div>
+          <div class="shop-item-title">Bóng Đồ Chơi</div>
+          <div class="shop-item-price">25 Xu (+35 Vui)</div>
+          <button class="btn btn-green" onclick="buyToy('ball', 25, 35)">Mua 🎾</button>
+        </div>
+        <div class="shop-item">
+          <div class="shop-item-icon">🎀</div>
+          <div class="shop-item-title">Nơ Cài Xinh Xắn</div>
+          <div class="shop-item-price">40 Xu (+50 Vui)</div>
+          <button class="btn btn-green" onclick="buyToy('ribbon', 40, 50)">Mua 🎀</button>
         </div>
       </div>
     </div>
@@ -600,14 +637,12 @@
       localStorage.setItem('fox_joy', foxJoy);
     }
 
-    // Hàm chọn ngẫu nhiên 1 ảnh thuộc nhóm mood
     function getRandomFoxImage(mood) {
       const list = FOX_IMAGES[mood] || FOX_IMAGES.normal;
       const randomIndex = Math.floor(Math.random() * list.length);
       return list[randomIndex];
     }
 
-    // Hàm tạo emoji bay lên đầu bé hồ ly
     function spawnFoxEmoji(emojiSymbol) {
       const container = document.querySelector('.fox-avatar-container');
       if (!container) return;
@@ -622,7 +657,6 @@
       setTimeout(() => el.remove(), 1200);
     }
 
-    // === 2. CẬP NHẬT BIỂU CẢM & ĐỔI ẢNH TỰ ĐỘNG CHO TIỂU BẠCH ===
     function setFoxMood(mood, text) {
       const foxImg = document.querySelector('.fox-svg');
       const bubble = document.getElementById('foxBubble');
@@ -630,13 +664,9 @@
       if (text && bubble) bubble.innerText = text;
       if (!foxImg) return;
 
-      // Đổi ảnh hiển thị ngẫu nhiên theo mood
       foxImg.src = getRandomFoxImage(mood);
-
-      // Xóa hiệu ứng chuyển động cũ
       foxImg.classList.remove('fox-anim-happy', 'fox-anim-sad', 'fox-anim-eat');
 
-      // Kích hoạt hiệu ứng chuyển động & emoji theo mood
       if (mood === 'happy') {
         foxImg.classList.add('fox-anim-happy');
         spawnFoxEmoji('❤️');
@@ -650,12 +680,11 @@
         spawnFoxEmoji('😋');
         setTimeout(() => spawnFoxEmoji('🍗'), 250);
       } else if (mood === 'question') {
-        foxImg.classList.add('fox-anim-sad'); // Lắc đầu thắc mắc
+        foxImg.classList.add('fox-anim-sad');
         spawnFoxEmoji('❓');
         setTimeout(() => spawnFoxEmoji('🤔'), 250);
       }
 
-      // Sau 3 giây tự trở về ảnh trạng thái nghiêm túc
       if (mood !== 'normal') {
         setTimeout(() => {
           foxImg.classList.remove('fox-anim-happy', 'fox-anim-sad', 'fox-anim-eat');
@@ -685,6 +714,21 @@
       foxJoy = Math.min(100, foxJoy + 10);
       playSound('buy');
       setFoxMood('eat', 'Ngon quá! Cảm ơn bạn nha Kyu~ 😋');
+      updateHeaderBadges();
+      updatePetUI();
+    }
+
+    // Hàm mua đồ chơi tăng độ vui
+    function buyToy(type, price, joyAmount) {
+      if(coins < price) { 
+        setFoxMood('question', 'Chưa đủ xu rồi kìa!');
+        showToast('Bạn chưa đủ Xu 🪙 rồi! Học thêm nhé.'); 
+        return; 
+      }
+      coins -= price;
+      foxJoy = Math.min(100, foxJoy + joyAmount);
+      playSound('buy');
+      setFoxMood('happy', 'Thích quá đi! Cảm ơn bạn nha Kyu~ ✨');
       updateHeaderBadges();
       updatePetUI();
     }
