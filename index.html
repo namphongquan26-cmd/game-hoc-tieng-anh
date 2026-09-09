@@ -459,6 +459,30 @@
   <div id="toastMsg"></div>
 
   <script>
+    // === 1. KHO ẢNH TIỂU BẠCH PHÂN THEO 5 BIỂU CẢM ===
+    const FOX_IMAGES = {
+      normal: [
+        'https://lh3.googleusercontent.com/d/1KwNqNr_6yTAdG-eDwpAQYvqjqarlPPks'
+      ],
+      happy: [
+        'https://lh3.googleusercontent.com/d/1R-efQgBMLbpMi-exXRdb1UdPcFKdmRsL',
+        'https://lh3.googleusercontent.com/d/1p1d9VSynXE0DmtJRm3lqcEPfzbLkV5-Z',
+        'https://lh3.googleusercontent.com/d/1GxffkiTwADJye0BHJeLTQfuj_ldAAgK9',
+        'https://lh3.googleusercontent.com/d/1dBWqfRy3kSoemYb4gKajiB9Tx__eaGhZ',
+        'https://lh3.googleusercontent.com/d/1pri6yrWV_CFFh75xK38rDNq-wQrjWdNM',
+        'https://lh3.googleusercontent.com/d/1sAAyZ1y2y2dhJ_KKXD9O9mogKpt3tci1'
+      ],
+      sad: [
+        'https://lh3.googleusercontent.com/d/1L_9MMMXbVWbn24XYOYslO_BvjWeaGqAk'
+      ],
+      eat: [
+        'https://lh3.googleusercontent.com/d/1OLC_3vCTF7BDZl-6ppFPAQ8TUgveyaBP'
+      ],
+      question: [
+        'https://lh3.googleusercontent.com/d/1rk3dNeS_VQ3wkVdCep_j_5k_xjol6XKa'
+      ]
+    };
+
     const DEFAULT_SHEET_ID = '12uCvxbX09mwJiCFCV2dMLuvx6KLM0d2RBUbHyg3_Ogw';
 
     let SHEET_ID = localStorage.getItem('user_sheet_id') || DEFAULT_SHEET_ID;
@@ -576,6 +600,13 @@
       localStorage.setItem('fox_joy', foxJoy);
     }
 
+    // Hàm chọn ngẫu nhiên 1 ảnh thuộc nhóm mood
+    function getRandomFoxImage(mood) {
+      const list = FOX_IMAGES[mood] || FOX_IMAGES.normal;
+      const randomIndex = Math.floor(Math.random() * list.length);
+      return list[randomIndex];
+    }
+
     // Hàm tạo emoji bay lên đầu bé hồ ly
     function spawnFoxEmoji(emojiSymbol) {
       const container = document.querySelector('.fox-avatar-container');
@@ -591,7 +622,7 @@
       setTimeout(() => el.remove(), 1200);
     }
 
-    // Cập nhật biểu cảm và chuyển động cho bé
+    // === 2. CẬP NHẬT BIỂU CẢM & ĐỔI ẢNH TỰ ĐỘNG CHO TIỂU BẠCH ===
     function setFoxMood(mood, text) {
       const foxImg = document.querySelector('.fox-svg');
       const bubble = document.getElementById('foxBubble');
@@ -599,8 +630,13 @@
       if (text && bubble) bubble.innerText = text;
       if (!foxImg) return;
 
+      // Đổi ảnh hiển thị ngẫu nhiên theo mood
+      foxImg.src = getRandomFoxImage(mood);
+
+      // Xóa hiệu ứng chuyển động cũ
       foxImg.classList.remove('fox-anim-happy', 'fox-anim-sad', 'fox-anim-eat');
 
+      // Kích hoạt hiệu ứng chuyển động & emoji theo mood
       if (mood === 'happy') {
         foxImg.classList.add('fox-anim-happy');
         spawnFoxEmoji('❤️');
@@ -613,12 +649,18 @@
         foxImg.classList.add('fox-anim-eat');
         spawnFoxEmoji('😋');
         setTimeout(() => spawnFoxEmoji('🍗'), 250);
+      } else if (mood === 'question') {
+        foxImg.classList.add('fox-anim-sad'); // Lắc đầu thắc mắc
+        spawnFoxEmoji('❓');
+        setTimeout(() => spawnFoxEmoji('🤔'), 250);
       }
 
+      // Sau 3 giây tự trở về ảnh trạng thái nghiêm túc
       if (mood !== 'normal') {
         setTimeout(() => {
           foxImg.classList.remove('fox-anim-happy', 'fox-anim-sad', 'fox-anim-eat');
-        }, 2500);
+          foxImg.src = getRandomFoxImage('normal');
+        }, 3000);
       }
     }
 
@@ -633,7 +675,11 @@
     function closeShop() { document.getElementById('shopModal').style.display = 'none'; }
 
     function buyFood(type, price, hungerAmount) {
-      if(coins < price) { showToast('Bạn chưa đủ Xu 🪙 rồi! Học thêm nhé.'); return; }
+      if(coins < price) { 
+        setFoxMood('question', 'Chưa đủ xu rồi kìa!');
+        showToast('Bạn chưa đủ Xu 🪙 rồi! Học thêm nhé.'); 
+        return; 
+      }
       coins -= price;
       foxHunger = Math.min(100, foxHunger + hungerAmount);
       foxJoy = Math.min(100, foxJoy + 10);
@@ -652,7 +698,10 @@
         card.className = `topic-card ${isUnlocked ? '' : 'locked'}`;
         card.innerHTML = `<div class="topic-icon">${isUnlocked ? '🦊' : '🔒'}</div><div class="topic-title">Chủ đề ${i}</div>`;
         if (isUnlocked) card.onclick = () => selectTopic(i);
-        else card.onclick = () => showToast(`Chủ đề ${i} đang khóa! Thêm vào Google Sheet để mở.`);
+        else card.onclick = () => {
+          setFoxMood('question', `Chủ đề ${i} đang bị khóa!`);
+          showToast(`Chủ đề ${i} đang khóa! Thêm vào Google Sheet để mở.`);
+        };
         grid.appendChild(card);
       }
     }
@@ -704,17 +753,29 @@
     async function selectTopic(num) {
       currentTopicIndex = num;
       const success = await loadDataFromSheet(num);
-      if(!success) { showToast(`Chưa tìm thấy tab "Chủ đề ${num}" trong Sheet.`); return; }
+      if(!success) { 
+        setFoxMood('question', 'Chưa có dữ liệu bài này!');
+        showToast(`Chưa tìm thấy tab "Chủ đề ${num}" trong Sheet.`); 
+        return; 
+      }
       openGameScreen(`Chủ đề ${num} (${vocabList.length} từ)`);
     }
 
     function openSpecialTopic(type) {
       if(type === 'saved') {
-        if(savedWords.length === 0) { showToast('Bạn chưa lưu từ nào! Bấm ☆ ở góc thẻ.'); return; }
+        if(savedWords.length === 0) { 
+          setFoxMood('question', 'Bạn chưa lưu từ nào!');
+          showToast('Bạn chưa lưu từ nào! Bấm ☆ ở góc thẻ.'); 
+          return; 
+        }
         vocabList = [...savedWords];
         openGameScreen(`⭐ Từ đã lưu (${vocabList.length} từ)`);
       } else if(type === 'wrong') {
-        if(wrongWords.length === 0) { showToast('Tuyệt vời! Không có từ nào hay sai 🎉'); return; }
+        if(wrongWords.length === 0) { 
+          setFoxMood('happy', 'Không có từ sai luôn!');
+          showToast('Tuyệt vời! Không có từ nào hay sai 🎉'); 
+          return; 
+        }
         vocabList = [...wrongWords];
         openGameScreen(`❌ Từ hay sai (${vocabList.length} từ)`);
       }
@@ -776,6 +837,7 @@
       if(quizIdx >= vocabList.length) {
         document.getElementById('quizQuestion').innerText = '🎉 Hoàn thành bài Trắc Nghiệm!';
         document.getElementById('quizOptions').innerHTML = '';
+        setFoxMood('happy', 'Xuất sắc quá đi! 🎉');
         return;
       }
       document.getElementById('quizFeedback').innerText = '';
@@ -869,6 +931,7 @@
       if(typeIdx >= vocabList.length) {
         document.getElementById('typingPrompt').innerText = '🎉 Hoàn thành gõ từ!';
         document.getElementById('typingInput').style.display = 'none';
+        setFoxMood('happy', 'Giỏi quá bạn ơi! ❤️');
         return;
       }
       document.getElementById('typingInput').style.display = 'inline-block';
@@ -912,6 +975,7 @@
       if(listenIdx >= vocabList.length) {
         document.getElementById('listeningFeedback').innerText = '🎉 Hoàn thành bài Nghe!';
         document.getElementById('listeningOptions').innerHTML = '';
+        setFoxMood('happy', 'Tai nghe siêu xịn! 🎧');
         return;
       }
       document.getElementById('listeningFeedback').innerText = '';
@@ -957,6 +1021,7 @@
         document.getElementById('scrambleMeaning').innerText = '🎉 Hoàn thành sắp xếp chữ!';
         document.getElementById('scrambleSelected').innerHTML = '';
         document.getElementById('scramblePool').innerHTML = '';
+        setFoxMood('happy', 'Siêu thông minh! 🔤');
         return;
       }
       document.getElementById('scrambleFeedback').innerText = '';
@@ -1008,6 +1073,7 @@
         setTimeout(loadNextScramble, 800);
       } else {
         playSound('wrong');
+        setFoxMood('sad');
         document.getElementById('scrambleFeedback').innerHTML = '<span style="color:#d63031">Chưa đúng, thử lại nhé!</span>';
       }
     }
@@ -1042,6 +1108,7 @@
           document.getElementById('taStartBtn').innerText = 'Chơi Lại ⚡';
           document.getElementById('taFeedback').innerHTML = `<span style="color:#6c5ce7">Hết giờ! Bạn đạt ${taScore} điểm và nhận ${taScore} Xu thưởng 🎉</span>`;
           addReward(taScore, taScore);
+          setFoxMood('happy', 'Phản xạ nhanh tuyệt vời!');
         }
       }, 1000);
     }
@@ -1068,7 +1135,7 @@
         btn.onclick = () => {
           if(taTimeLeft <= 0) return;
           if(opt === current.vi) { taScore += 10; playSound('correct'); } 
-          else { playSound('wrong'); }
+          else { playSound('wrong'); setFoxMood('sad'); }
           nextTimeAttackQuestion();
         };
         optContainer.appendChild(btn);
