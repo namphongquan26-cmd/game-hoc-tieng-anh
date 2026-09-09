@@ -65,7 +65,6 @@
     .badge.interactive { cursor: pointer; transition: transform 0.2s; }
     .badge.interactive:hover { transform: scale(1.05); background: var(--yellow); }
 
-    /* TIÊU ĐỀ DÙNG PHÔNG CHUẨN, KHÔNG LỖI DẤU */
     .header { text-align: center; margin-bottom: 8px; width: 100%; padding: 0 5px; }
     .header h1 { 
       font-family: 'Quicksand', sans-serif; 
@@ -129,8 +128,46 @@
       border-color: #ff7675 transparent;
     }
 
-    .fox-svg { width: 95px; height: 95px; transition: transform 0.2s; }
+    .fox-svg { width: 95px; height: 95px; transition: transform 0.3s ease; }
     .fox-svg:hover { transform: scale(1.06); }
+
+    /* HIỆU ỨNG BIỂU CẢM BÉ HỒ LY */
+    .fox-anim-happy {
+      animation: foxBounce 0.6s ease infinite alternate;
+    }
+    @keyframes foxBounce {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-12px) scale(1.05) rotate(3deg); }
+    }
+
+    .fox-anim-sad {
+      animation: foxShake 0.5s ease;
+    }
+    @keyframes foxShake {
+      0%, 100% { transform: translateX(0) rotate(0); }
+      20%, 60% { transform: translateX(-6px) rotate(-4deg); }
+      40%, 80% { transform: translateX(6px) rotate(4deg); }
+    }
+
+    .fox-anim-eat {
+      animation: foxChew 0.4s ease 3;
+    }
+    @keyframes foxChew {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.12, 0.92); }
+    }
+
+    .emoji-particle {
+      position: absolute;
+      font-size: 1.5rem;
+      pointer-events: none;
+      animation: floatUp 1.2s ease-out forwards;
+      z-index: 30;
+    }
+    @keyframes floatUp {
+      0% { opacity: 1; transform: translateY(0) scale(0.8); }
+      100% { opacity: 0; transform: translateY(-45px) scale(1.3); }
+    }
 
     .pet-stats { display: flex; flex-direction: column; gap: 6px; min-width: 140px; }
     .stat-bar-container { display: flex; align-items: center; gap: 6px; font-weight: 700; font-size: 0.8rem; }
@@ -267,93 +304,8 @@
   <div class="pet-section">
     <div class="fox-avatar-container" onclick="clickFox()">
       <div class="fox-speech-bubble" id="foxBubble">Kyu~ Mua đùi gà cho mình nhé!</div>
-      
       <!-- BÉ HỒ LY TIỂU BẠCH -->
-<img src="https://lh3.googleusercontent.com/d/1KwNqNr_6yTAdG-eDwpAQYvqjqarlPPks" alt="Tiểu Bạch" class="fox-svg" style="object-fit: contain;">
-        <path d="M 38 75 C 8 85, -2 45, 14 30 C 24 22, 40 42, 36 68 Z" fill="#ffffff" stroke="#d63031" stroke-width="2.5" stroke-linejoin="round"/>
-        <path d="M 14 30 C 10 36, 18 44, 26 38 C 24 32, 20 31, 14 30 Z" fill="#d63031"/>
-
-        <!-- Thân mềm mại -->
-        <ellipse cx="52" cy="68" rx="20" ry="16" fill="#ffffff" stroke="#dfe6e9" stroke-width="2"/>
-        
-        <!-- Tay màu đỏ bám phía trước -->
-        <ellipse cx="42" cy="72" rx="4.5" ry="7" fill="#d63031"/>
-        <ellipse cx="62" cy="72" rx="4.5" ry="7" fill="#d63031"/>
-
-        <!-- Tai Anime to mềm mại -->
-        <path d="M 32 30 C 24 16, 12 6, 18 12 C 24 18, 30 24, 38 26 Z" fill="#ffffff" stroke="#d63031" stroke-width="2.5" stroke-linejoin="round"/>
-        <path d="M 28 24 C 22 15, 15 9, 20 13 C 25 17, 28 20, 32 23 Z" fill="#d63031"/>
-
-        <path d="M 68 30 C 76 16, 88 6, 82 12 C 76 18, 70 24, 62 26 Z" fill="#ffffff" stroke="#d63031" stroke-width="2.5" stroke-linejoin="round"/>
-        <path d="M 72 24 C 78 15, 85 9, 80 13 C 75 17, 72 20, 68 23 Z" fill="#d63031"/>
-
-        <!-- Đầu tròn anime -->
-        <circle cx="50" cy="45" r="26" fill="#ffffff" stroke="#dfe6e9" stroke-width="2"/>
-
-        <!-- Ấn chú trên trán -->
-        <path d="M 50 24 L 53 30 L 50 35 L 47 30 Z" fill="#d63031"/>
-        <path d="M 50 18 L 51.5 21 L 50 23 L 48.5 21 Z" fill="#d63031"/>
-        <path d="M 41 27 Q 44 26 45 28" fill="none" stroke="#d63031" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M 59 27 Q 56 26 55 28" fill="none" stroke="#d63031" stroke-width="1.8" stroke-linecap="round"/>
-
-        <!-- Má hồng bánh bao phúng phính -->
-        <ellipse cx="31" cy="50" rx="5" ry="3" fill="#ffb8b8" opacity="0.85"/>
-        <ellipse cx="69" cy="50" rx="5" ry="3" fill="#ffb8b8" opacity="0.85"/>
-
-        <!-- Vệt đỏ ở má -->
-        <path d="M 26 48 Q 28 50 25 52" fill="none" stroke="#d63031" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M 74 48 Q 72 50 75 52" fill="none" stroke="#d63031" stroke-width="1.5" stroke-linecap="round"/>
-
-        <!-- Mắt Anime to tròn, long lanh, màu đỏ -->
-        <g id="foxEyesNormal">
-          <ellipse cx="37" cy="43" rx="5.5" ry="7" fill="#d63031"/>
-          <ellipse cx="37" cy="43" rx="3.5" ry="5.5" fill="#800000"/>
-          <circle cx="35" cy="39" r="2.2" fill="#ffffff"/>
-          <circle cx="38" cy="45" r="1.2" fill="#ffffff"/>
-
-          <ellipse cx="63" cy="43" rx="5.5" ry="7" fill="#d63031"/>
-          <ellipse cx="63" cy="43" rx="3.5" ry="5.5" fill="#800000"/>
-          <circle cx="61" cy="39" r="2.2" fill="#ffffff"/>
-          <circle cx="64" cy="45" r="1.2" fill="#ffffff"/>
-        </g>
-        <g id="foxEyesHappy" style="display: none;">
-          <path d="M 32 44 Q 37 36 42 44" stroke="#d63031" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-          <path d="M 58 44 Q 63 36 68 44" stroke="#d63031" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        </g>
-        <g id="foxEyesSad" style="display: none;">
-          <path d="M 32 40 L 42 46" stroke="#d63031" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M 68 40 L 58 46" stroke="#d63031" stroke-width="2.5" stroke-linecap="round"/>
-        </g>
-
-        <!-- Mũi & miệng chữ w có nanh -->
-        <circle cx="50" cy="49" r="2" fill="#2d3436"/>
-        <path d="M 47 52 L 48 54 L 49 52 Z" fill="#2d3436"/>
-        <path d="M 53 52 L 52 54 L 51 52 Z" fill="#2d3436"/>
-        <path d="M 45 51 Q 48 54 50 51 Q 52 54 55 51" fill="none" stroke="#2d3436" stroke-width="2" stroke-linecap="round"/>
-
-        <!-- Phụ kiện -->
-        <g id="accGlasses" style="display: none;">
-          <rect x="29" y="38" width="15" height="11" rx="4" fill="none" stroke="#2d3436" stroke-width="2.5"/>
-          <rect x="56" y="38" width="15" height="11" rx="4" fill="none" stroke="#2d3436" stroke-width="2.5"/>
-          <line x1="44" y1="43" x2="56" y1="43" stroke="#2d3436" stroke-width="2.5"/>
-        </g>
-        <g id="accCrown" style="display: none;">
-          <polygon points="40,24 44,13 50,18 56,13 60,24" fill="#f1c40f" stroke="#f39c12" stroke-width="1.5"/>
-        </g>
-        <g id="accHat" style="display: none;">
-          <rect x="35" y="20" width="30" height="3" fill="#2c3e50" rx="1"/>
-          <rect x="40" y="7" width="20" height="14" fill="#2c3e50"/>
-          <rect x="40" y="15" width="20" height="3" fill="#e74c3c"/>
-        </g>
-        <g id="accBow" style="display: none;">
-          <polygon points="42,58 50,61 42,64" fill="#e84393"/>
-          <polygon points="58,58 50,61 58,64" fill="#e84393"/>
-          <circle cx="50" cy="61" r="3.2" fill="#ff7675"/>
-        </g>
-        <g id="accGem" style="display: none;">
-          <circle cx="50" cy="61" r="4.5" fill="#00cec9" stroke="#00b894" stroke-width="1.5"/>
-        </g>
-      </svg>
+      <img src="https://lh3.googleusercontent.com/d/1KwNqNr_6yTAdG-eDwpAQYvqjqarlPPks" alt="Tiểu Bạch" class="fox-svg" style="object-fit: contain;">
     </div>
 
     <div class="pet-stats">
@@ -473,7 +425,7 @@
         <h2>🛍️ Cửa Hàng Tiểu Bạch</h2>
         <button class="btn btn-dark" onclick="closeShop()">✕ Đóng</button>
       </div>
-      <p style="margin-top: 5px; font-size: 0.88rem;">Dùng Xu 🪙 mua đồ ăn và trang bị cho Tiểu Bạch nhé!</p>
+      <p style="margin-top: 5px; font-size: 0.88rem;">Dùng Xu 🪙 mua đồ ăn cho Tiểu Bạch nhé!</p>
 
       <div class="shop-grid">
         <div class="shop-item">
@@ -500,30 +452,6 @@
           <div class="shop-item-price">15 Xu (+15 No/Vui)</div>
           <button class="btn btn-green" onclick="buyFood('tea', 15, 15)">Mua 🍵</button>
         </div>
-        <div class="shop-item">
-          <div class="shop-item-icon">🎀</div>
-          <div class="shop-item-title">Nơ Cổ Đỏ</div>
-          <div class="shop-item-price">40 Xu</div>
-          <button class="btn btn-yellow" id="btnAccBow" onclick="buyOrEquip('bow', 40)">Mua 🎀</button>
-        </div>
-        <div class="shop-item">
-          <div class="shop-item-icon">🕶️</div>
-          <div class="shop-item-title">Kính Mát Ngầu</div>
-          <div class="shop-item-price">50 Xu</div>
-          <button class="btn btn-yellow" id="btnAccGlasses" onclick="buyOrEquip('glasses', 50)">Mua 🕶️</button>
-        </div>
-        <div class="shop-item">
-          <div class="shop-item-icon">👑</div>
-          <div class="shop-item-title">Vương Miện</div>
-          <div class="shop-item-price">100 Xu</div>
-          <button class="btn btn-yellow" id="btnAccCrown" onclick="buyOrEquip('crown', 100)">Mua 👑</button>
-        </div>
-        <div class="shop-item">
-          <div class="shop-item-icon">🔮</div>
-          <div class="shop-item-title">Ngọc Hồ Ly</div>
-          <div class="shop-item-price">80 Xu</div>
-          <button class="btn btn-yellow" id="btnAccGem" onclick="buyOrEquip('gem', 80)">Mua 🔮</button>
-        </div>
       </div>
     </div>
   </div>
@@ -542,8 +470,6 @@
 
     let foxHunger = parseInt(localStorage.getItem('fox_hunger') || '80');
     let foxJoy = parseInt(localStorage.getItem('fox_joy') || '80');
-    let foxInventory = JSON.parse(localStorage.getItem('fox_inventory') || '[]');
-    let foxEquipped = JSON.parse(localStorage.getItem('fox_equipped') || '[]');
 
     let vocabList = [];
     let currentTopicIndex = 0;
@@ -633,7 +559,7 @@
         wrongWords.push(item);
         updateHeaderBadges();
       }
-      setFoxMood('sad', 'Cố lên bạn ơi! Thử lại nhé Kyu~');
+      setFoxMood('sad');
     }
 
     function removeWrongWord(item) {
@@ -648,29 +574,50 @@
 
       localStorage.setItem('fox_hunger', foxHunger);
       localStorage.setItem('fox_joy', foxJoy);
-      localStorage.setItem('fox_inventory', JSON.stringify(foxInventory));
-      localStorage.setItem('fox_equipped', JSON.stringify(foxEquipped));
-
-      document.getElementById('accGlasses').style.display = foxEquipped.includes('glasses') ? 'block' : 'none';
-      document.getElementById('accCrown').style.display = foxEquipped.includes('crown') ? 'block' : 'none';
-      document.getElementById('accHat').style.display = foxEquipped.includes('hat') ? 'block' : 'none';
-      document.getElementById('accBow').style.display = foxEquipped.includes('bow') ? 'block' : 'none';
-      document.getElementById('accGem').style.display = foxEquipped.includes('gem') ? 'block' : 'none';
-
-      updateShopButtons();
     }
 
-    function setFoxMood(mood, text) {
-      document.getElementById('foxEyesNormal').style.display = (mood === 'normal') ? 'block' : 'none';
-      document.getElementById('foxEyesHappy').style.display = (mood === 'happy') ? 'block' : 'none';
-      document.getElementById('foxEyesSad').style.display = (mood === 'sad') ? 'block' : 'none';
-      if(text) document.getElementById('foxBubble').innerText = text;
+    // Hàm tạo emoji bay lên đầu bé hồ ly
+    function spawnFoxEmoji(emojiSymbol) {
+      const container = document.querySelector('.fox-avatar-container');
+      if (!container) return;
+      
+      const el = document.createElement('div');
+      el.className = 'emoji-particle';
+      el.innerText = emojiSymbol;
+      el.style.left = (35 + Math.random() * 30) + '%';
+      el.style.top = '10%';
+      
+      container.appendChild(el);
+      setTimeout(() => el.remove(), 1200);
+    }
 
-      if(mood !== 'normal') {
+    // Cập nhật biểu cảm và chuyển động cho bé
+    function setFoxMood(mood, text) {
+      const foxImg = document.querySelector('.fox-svg');
+      const bubble = document.getElementById('foxBubble');
+      
+      if (text && bubble) bubble.innerText = text;
+      if (!foxImg) return;
+
+      foxImg.classList.remove('fox-anim-happy', 'fox-anim-sad', 'fox-anim-eat');
+
+      if (mood === 'happy') {
+        foxImg.classList.add('fox-anim-happy');
+        spawnFoxEmoji('❤️');
+        setTimeout(() => spawnFoxEmoji('✨'), 300);
+      } else if (mood === 'sad') {
+        foxImg.classList.add('fox-anim-sad');
+        spawnFoxEmoji('💧');
+        setTimeout(() => spawnFoxEmoji('💔'), 200);
+      } else if (mood === 'eat') {
+        foxImg.classList.add('fox-anim-eat');
+        spawnFoxEmoji('😋');
+        setTimeout(() => spawnFoxEmoji('🍗'), 250);
+      }
+
+      if (mood !== 'normal') {
         setTimeout(() => {
-          document.getElementById('foxEyesNormal').style.display = 'block';
-          document.getElementById('foxEyesHappy').style.display = 'none';
-          document.getElementById('foxEyesSad').style.display = 'none';
+          foxImg.classList.remove('fox-anim-happy', 'fox-anim-sad', 'fox-anim-eat');
         }, 2500);
       }
     }
@@ -691,47 +638,9 @@
       foxHunger = Math.min(100, foxHunger + hungerAmount);
       foxJoy = Math.min(100, foxJoy + 10);
       playSound('buy');
-      setFoxMood('happy', 'Ngon quá! Cảm ơn bạn nha Kyu~ 😋');
+      setFoxMood('eat', 'Ngon quá! Cảm ơn bạn nha Kyu~ 😋');
       updateHeaderBadges();
       updatePetUI();
-    }
-
-    function buyOrEquip(itemKey, price) {
-      if(!foxInventory.includes(itemKey)) {
-        if(coins < price) { showToast('Bạn chưa đủ Xu 🪙 để mua món này!'); return; }
-        coins -= price;
-        foxInventory.push(itemKey);
-        foxEquipped.push(itemKey);
-        playSound('buy');
-        setFoxMood('happy', 'Tiểu Bạch có đồ mới đẹp quá! ✨');
-      } else {
-        if(foxEquipped.includes(itemKey)) {
-          foxEquipped = foxEquipped.filter(i => i !== itemKey);
-        } else {
-          foxEquipped.push(itemKey);
-        }
-        playSound('kyu');
-      }
-      updateHeaderBadges();
-      updatePetUI();
-    }
-
-    function updateShopButtons() {
-      const accs = ['bow', 'glasses', 'crown', 'gem'];
-      accs.forEach(key => {
-        const btn = document.getElementById('btnAcc' + key.charAt(0).toUpperCase() + key.slice(1));
-        if(!btn) return;
-        if(!foxInventory.includes(key)) {
-          btn.innerText = 'Mua ✨';
-          btn.className = 'btn btn-yellow';
-        } else if(foxEquipped.includes(key)) {
-          btn.innerText = 'Đang đeo (Tháo)';
-          btn.className = 'btn btn-sec';
-        } else {
-          btn.innerText = 'Đeo vào';
-          btn.className = 'btn btn-green';
-        }
-      });
     }
 
     function initTopicGrid() {
