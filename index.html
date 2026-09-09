@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Tiểu Bạch English Playland 🦊</title>
+  <title>Tiểu Bạch English 🦊</title>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
   
   <style>
     :root {
       --bg: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
-      --card-bg: rgba(255, 255, 255, 0.94);
+      --card-bg: rgba(255, 255, 255, 0.95);
       --box-bg: #ffffff;
       --text: #2d3436;
       --primary: #ff6b6b;
@@ -22,7 +22,7 @@
 
     body.dark-mode {
       --bg: linear-gradient(135deg, #1e272e 0%, #0f172a 100%);
-      --card-bg: rgba(30, 41, 59, 0.94);
+      --card-bg: rgba(30, 41, 59, 0.95);
       --box-bg: #1e293b;
       --text: #f8fafc;
       --border: #38bdf8;
@@ -36,7 +36,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 12px;
+      padding: 10px;
       color: var(--text);
     }
 
@@ -46,187 +46,186 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 15px;
+      margin-bottom: 8px;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
     }
 
     .badge {
       background: var(--box-bg);
-      padding: 6px 12px;
+      padding: 5px 10px;
       border-radius: 20px;
       font-weight: 800;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.06);
       display: flex;
       align-items: center;
-      gap: 5px;
-      font-size: 0.9rem;
+      gap: 4px;
+      font-size: 0.82rem;
     }
     .badge.interactive { cursor: pointer; transition: transform 0.2s; }
     .badge.interactive:hover { transform: scale(1.05); background: var(--yellow); }
 
-    .header { text-align: center; margin-bottom: 35px; width: 100%; padding: 0 10px; }
+    /* TIÊU ĐỀ GỌN GÀNG, KHÔNG BỊ TRÀN CHỮ */
+    .header { text-align: center; margin-bottom: 8px; width: 100%; padding: 0 5px; }
     .header h1 { 
       font-family: 'Fredoka One', cursive; 
-      font-size: 2rem; 
+      font-size: 1.5rem; 
       color: #d63031; 
-      text-shadow: 2px 2px 0px #fff; 
-      line-height: 1.4;
-      word-break: normal;
+      text-shadow: 1.5px 1.5px 0px #fff; 
+      line-height: 1.2;
     }
 
+    /* KHUNG THÚ CƯNG TỐI ƯU GIAO DIỆN DI ĐỘNG */
     .pet-section {
       width: 100%;
       max-width: 850px;
       background: var(--card-bg);
-      border-radius: 25px;
-      padding: 15px 20px;
-      margin-bottom: 15px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      border-radius: 20px;
+      padding: 12px 15px;
+      margin-bottom: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
       display: flex;
       align-items: center;
       justify-content: space-around;
       flex-wrap: wrap;
-      gap: 15px;
+      gap: 10px;
       position: relative;
     }
 
     .fox-avatar-container {
       position: relative;
-      width: 110px;
-      height: 110px;
+      width: 95px;
+      height: 95px;
       display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
+      margin-top: 10px;
     }
 
+    /* BÓNG THOẠI ĐẶT AN TOÀN PHÍA TRÊN */
     .fox-speech-bubble {
       position: absolute;
-      bottom: calc(100% + 10px); /* Tự giãn lên trên không đè chữ */
+      bottom: calc(100% + 8px);
       left: 50%;
       transform: translateX(-50%);
       background: #ff7675;
       color: #fff;
-      padding: 8px 14px;
-      border-radius: 15px;
-      font-size: 0.85rem;
+      padding: 6px 12px;
+      border-radius: 12px;
+      font-size: 0.75rem;
       font-weight: 800;
-      white-space: normal;
-      width: max-content;
-      max-width: 220px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      white-space: nowrap;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
       z-index: 20;
-      line-height: 1.4;
     }
     .fox-speech-bubble::after {
       content: '';
       position: absolute;
-      bottom: -6px;
+      bottom: -5px;
       left: 50%;
       transform: translateX(-50%);
-      border-width: 6px 6px 0;
+      border-width: 5px 5px 0;
       border-style: solid;
       border-color: #ff7675 transparent;
     }
 
-    .fox-svg { width: 110px; height: 110px; transition: transform 0.2s; }
-    .fox-svg:hover { transform: scale(1.08); }
+    .fox-svg { width: 90px; height: 90px; transition: transform 0.2s; }
+    .fox-svg:hover { transform: scale(1.06); }
 
-    .pet-stats { display: flex; flex-direction: column; gap: 8px; min-width: 160px; }
-    .stat-bar-container { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 0.85rem; }
-    .stat-bar { flex: 1; height: 12px; background: #dfe6e9; border-radius: 10px; overflow: hidden; }
+    .pet-stats { display: flex; flex-direction: column; gap: 6px; min-width: 140px; }
+    .stat-bar-container { display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: 0.8rem; }
+    .stat-bar { flex: 1; height: 10px; background: #dfe6e9; border-radius: 10px; overflow: hidden; }
     .stat-fill { height: 100%; width: 100%; transition: width 0.4s ease; }
     .fill-hunger { background: #ff7675; }
     .fill-joy { background: #fdcb6e; }
 
-    .pet-actions { display: flex; gap: 8px; }
+    .pet-actions { display: flex; gap: 6px; }
 
     .btn {
-      background: var(--primary); color: white; border: none; padding: 8px 16px;
-      border-radius: 22px; font-weight: 800; cursor: pointer; box-shadow: 0 4px 0 #c0392b;
-      transition: all 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 5px; font-size: 0.9rem;
+      background: var(--primary); color: white; border: none; padding: 7px 14px;
+      border-radius: 20px; font-weight: 800; cursor: pointer; box-shadow: 0 3px 0 #c0392b;
+      transition: all 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 4px; font-size: 0.85rem;
     }
     .btn:hover { transform: translateY(-2px); }
     .btn:active { transform: translateY(2px); box-shadow: none; }
-    .btn-sec { background: var(--secondary); box-shadow: 0 4px 0 #d63031; }
-    .btn-green { background: var(--accent); color: #2d3436; box-shadow: 0 4px 0 #00b894; }
-    .btn-yellow { background: #fdcb6e; color: #2d3436; box-shadow: 0 4px 0 #e17055; }
-    .btn-dark { background: #636e72; box-shadow: 0 4px 0 #2d3436; }
-    .btn-purple { background: var(--purple); color: white; box-shadow: 0 4px 0 #6c5ce7; }
-    .btn-pink { background: #fd79a8; color: white; box-shadow: 0 4px 0 #e84393; }
+    .btn-sec { background: var(--secondary); box-shadow: 0 3px 0 #d63031; }
+    .btn-green { background: var(--accent); color: #2d3436; box-shadow: 0 3px 0 #00b894; }
+    .btn-yellow { background: #fdcb6e; color: #2d3436; box-shadow: 0 3px 0 #e17055; }
+    .btn-dark { background: #636e72; box-shadow: 0 3px 0 #2d3436; }
+    .btn-purple { background: var(--purple); color: white; box-shadow: 0 3px 0 #6c5ce7; }
+    .btn-pink { background: #fd79a8; color: white; box-shadow: 0 3px 0 #e84393; }
 
     .container {
       width: 100%; max-width: 850px; background: var(--card-bg); backdrop-filter: blur(10px);
-      border-radius: 25px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border-radius: 22px; padding: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.08);
     }
 
-    .special-topics { display: flex; gap: 10px; margin-bottom: 18px; justify-content: center; flex-wrap: wrap; }
+    .special-topics { display: flex; gap: 8px; margin-bottom: 15px; justify-content: center; flex-wrap: wrap; }
 
-    .topics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 12px; }
+    .topics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; }
     .topic-card {
-      background: var(--box-bg); border-radius: 18px; padding: 15px 5px; text-align: center;
-      cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 3px solid var(--border); transition: all 0.25s;
+      background: var(--box-bg); border-radius: 16px; padding: 12px 4px; text-align: center;
+      cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,0.04); border: 2.5px solid var(--border); transition: all 0.25s;
     }
-    .topic-card:hover:not(.locked) { transform: scale(1.05); }
+    .topic-card:hover:not(.locked) { transform: scale(1.04); }
     .topic-card.locked { background: #dfe6e9; border-color: #b2bec3; cursor: not-allowed; opacity: 0.6; color: #636e72; }
-    .topic-icon { font-size: 1.8rem; margin-bottom: 4px; }
-    .topic-title { font-weight: 800; font-size: 0.88rem; }
+    .topic-icon { font-size: 1.6rem; margin-bottom: 2px; }
+    .topic-title { font-weight: 800; font-size: 0.82rem; }
 
     .game-box { display: none; text-align: center; }
     .active { display: block; }
-    .mode-select { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 18px; }
+    .mode-select { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 15px; }
 
-    .flashcard { width: 100%; max-width: 300px; height: 180px; margin: 15px auto; perspective: 1000px; cursor: pointer; }
+    .flashcard { width: 100%; max-width: 280px; height: 170px; margin: 12px auto; perspective: 1000px; cursor: pointer; }
     .flashcard-inner {
       width: 100%; height: 100%; position: relative; transform-style: preserve-3d;
-      transition: transform 0.6s; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-radius: 20px;
+      transition: transform 0.6s; box-shadow: 0 8px 18px rgba(0,0,0,0.08); border-radius: 18px;
     }
     .flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
     .card-front, .card-back {
       position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
-      border-radius: 20px; display: flex; align-items: center; justify-content: center;
-      padding: 15px; font-size: 1.5rem; font-weight: 800; word-break: break-word; text-align: center;
+      border-radius: 18px; display: flex; align-items: center; justify-content: center;
+      padding: 12px; font-size: 1.4rem; font-weight: 800; word-break: break-word; text-align: center;
     }
     .card-front { background: #ffeaa7; color: #d63031; }
     .card-back { background: #74b9ff; color: white; transform: rotateY(180deg); }
 
-    .star-btn { position: absolute; top: 10px; right: 15px; font-size: 1.5rem; cursor: pointer; z-index: 10; background: none; border: none; }
+    .star-btn { position: absolute; top: 8px; right: 12px; font-size: 1.4rem; cursor: pointer; z-index: 10; background: none; border: none; }
 
-    .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+    .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
     .quiz-btn {
-      background: var(--box-bg); color: var(--text); border: 3px solid var(--secondary);
-      padding: 12px; border-radius: 15px; font-size: 1rem; font-weight: 800; cursor: pointer; word-break: break-word;
+      background: var(--box-bg); color: var(--text); border: 2.5px solid var(--secondary);
+      padding: 10px; border-radius: 14px; font-size: 0.95rem; font-weight: 800; cursor: pointer; word-break: break-word;
     }
     .quiz-btn:hover { background: var(--secondary); color: white; }
 
-    .matching-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 15px; }
+    .matching-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 12px; }
     .match-card {
       background: var(--box-bg); color: var(--text); border: 2px solid var(--purple);
-      padding: 10px 6px; border-radius: 14px; font-weight: 800; font-size: 0.88rem;
-      cursor: pointer; min-height: 65px; display: flex; align-items: center; justify-content: center;
-      text-align: center; word-break: break-word; line-height: 1.25; box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+      padding: 8px 4px; border-radius: 12px; font-weight: 800; font-size: 0.82rem;
+      cursor: pointer; min-height: 60px; display: flex; align-items: center; justify-content: center;
+      text-align: center; word-break: break-word; line-height: 1.2; box-shadow: 0 2px 6px rgba(0,0,0,0.04);
     }
     .match-card.selected { background: var(--yellow); border-color: #fdcb6e; color: #2d3436; transform: scale(1.02); }
     .match-card.matched { visibility: hidden; opacity: 0; pointer-events: none; }
 
     .typing-input {
-      padding: 10px 18px; font-size: 1.05rem; border-radius: 20px; border: 3px solid var(--primary);
-      text-align: center; margin: 15px 0; outline: none; width: 90%; max-width: 300px;
+      padding: 8px 15px; font-size: 1rem; border-radius: 18px; border: 2.5px solid var(--primary);
+      text-align: center; margin: 12px 0; outline: none; width: 90%; max-width: 280px;
       background: var(--box-bg); color: var(--text);
     }
 
-    .scramble-letters { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 15px 0; }
+    .scramble-letters { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; margin: 12px 0; }
     .letter-tile {
-      background: var(--yellow); color: #d63031; width: 45px; height: 45px; border-radius: 12px;
-      display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 900;
-      cursor: pointer; box-shadow: 0 4px 0 #e17055;
+      background: var(--yellow); color: #d63031; width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 900;
+      cursor: pointer; box-shadow: 0 3px 0 #e17055;
     }
     .letter-tile:active { transform: translateY(2px); box-shadow: none; }
 
-    .feedback { font-size: 1.1rem; font-weight: 800; margin: 10px 0; min-height: 28px; }
-    .score-board { font-size: 1.05rem; font-weight: 800; color: #6c5ce7; margin-bottom: 8px; }
+    .feedback { font-size: 1rem; font-weight: 800; margin: 8px 0; min-height: 24px; }
+    .score-board { font-size: 1rem; font-weight: 800; color: #6c5ce7; margin-bottom: 6px; }
 
     .modal-overlay {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -234,44 +233,23 @@
       display: none; justify-content: center; align-items: center; z-index: 1000;
     }
     .modal-content {
-      background: var(--box-bg); width: 92%; max-width: 550px; border-radius: 25px;
-      padding: 20px; color: var(--text); box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      background: var(--box-bg); width: 92%; max-width: 500px; border-radius: 22px;
+      padding: 18px; color: var(--text); box-shadow: 0 12px 30px rgba(0,0,0,0.2);
       max-height: 85vh; overflow-y: auto;
     }
-    .shop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+    .shop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
     .shop-item {
-      border: 2px solid var(--secondary); border-radius: 16px; padding: 10px; text-align: center;
-      background: var(--card-bg); display: flex; flex-direction: column; align-items: center; gap: 5px;
+      border: 2px solid var(--secondary); border-radius: 14px; padding: 8px; text-align: center;
+      background: var(--card-bg); display: flex; flex-direction: column; align-items: center; gap: 4px;
     }
-    .shop-item-icon { font-size: 2rem; }
-    .shop-item-title { font-weight: 800; font-size: 0.9rem; }
-    .shop-item-price { color: #e17055; font-weight: 900; font-size: 0.85rem; }
+    .shop-item-icon { font-size: 1.8rem; }
+    .shop-item-title { font-weight: 800; font-size: 0.85rem; }
+    .shop-item-price { color: #e17055; font-weight: 900; font-size: 0.8rem; }
 
     #toastMsg {
-      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #2d3436; color: white; 
-      padding: 12px 24px; border-radius: 25px; z-index: 10000; display: none; font-weight: 800; 
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3); text-align: center; min-width: 250px;
-    }
-
-    @media screen and (max-width: 600px) {
-      body { padding: 8px; }
-      .header h1 { font-size: 1.7rem; margin-bottom: 30px; }
-      .top-bar { gap: 5px; justify-content: center; }
-      .badge { padding: 4px 10px; font-size: 0.8rem; }
-      #darkBtn { font-size: 0.8rem; padding: 5px 12px; }
-      .pet-section { padding: 12px 10px; gap: 10px; border-radius: 20px; margin-top: 15px; }
-      .fox-avatar-container { width: 95px; height: 95px; }
-      .fox-svg { width: 95px; height: 95px; }
-      .container { padding: 14px; border-radius: 20px; }
-      .matching-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
-      .match-card { min-height: 55px; padding: 8px 4px; font-size: 0.82rem; }
-      .quiz-options { grid-template-columns: 1fr; gap: 8px; }
-      .quiz-btn { padding: 10px; font-size: 0.95rem; }
-      .mode-select .btn { padding: 6px 10px; font-size: 0.78rem; }
-      .topics-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-      .topic-card { padding: 10px 3px; }
-      .topic-icon { font-size: 1.5rem; }
-      .topic-title { font-size: 0.78rem; }
+      position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); background: #2d3436; color: white; 
+      padding: 10px 20px; border-radius: 20px; z-index: 10000; display: none; font-weight: 800; 
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3); text-align: center; min-width: 220px; font-size: 0.9rem;
     }
   </style>
 </head>
@@ -282,120 +260,116 @@
     <div class="badge">🏆 Điểm: <span id="totalScore">0</span></div>
     <div class="badge interactive" onclick="openSpecialTopic('saved')">⭐ Đã lưu: <span id="savedCount">0</span></div>
     <div class="badge interactive" onclick="openSpecialTopic('wrong')">❌ Hay sai: <span id="wrongCount">0</span></div>
-    <button class="btn btn-dark" onclick="toggleDarkMode()" id="darkBtn">🌙 Chế độ tối</button>
+    <button class="btn btn-dark" onclick="toggleDarkMode()" id="darkBtn" style="padding: 4px 10px; font-size: 0.78rem;">🌙 Tối</button>
   </div>
 
   <div class="header">
-    <h1>🦊 Tiểu Bạch English Playland 🦊</h1>
+    <h1>🦊 Tiểu Bạch English 🦊</h1>
   </div>
 
   <div class="pet-section">
     <div class="fox-avatar-container" onclick="clickFox()">
-      <div class="fox-speech-bubble" id="foxBubble">Kyu~ Học bài tích xu mua đùi gà cho Tiểu Bạch nha!</div>
+      <div class="fox-speech-bubble" id="foxBubble">Kyu~ Mua đùi gà cho mình nhé!</div>
       
-      <!-- HỒ LY BẢN CUTE CHUẨN KAWAI 2.0 -->
+      <!-- HỒ LY BẢN HOÀN HẢO - SIÊU XINH CUTE -->
       <svg class="fox-svg" viewBox="0 0 100 100">
-        <!-- Đuôi bồng bềnh -->
-        <path d="M 40 75 C 10 90, 0 50, 15 35 C 25 25, 40 45, 35 70 Z" fill="#ffffff" stroke="#ff7675" stroke-width="2"/>
-        <path d="M 15 35 C 10 40, 18 50, 25 45 C 23 38, 20 36, 15 35 Z" fill="#ff7675"/>
+        <!-- Đuôi bồng bềnh sau lưng -->
+        <path d="M 42 72 C 12 85, 2 45, 18 32 C 28 24, 42 42, 38 68 Z" fill="#ffffff" stroke="#ff7675" stroke-width="2"/>
+        <path d="M 18 32 C 14 38, 22 46, 28 40 C 26 34, 23 33, 18 32 Z" fill="#ff7675"/>
 
-        <!-- Thân hình mũm mĩm xíu -->
-        <path d="M 32 50 C 25 85, 75 85, 68 50 Z" fill="#ffffff" stroke="#dfe6e9" stroke-width="2"/>
-        
-        <!-- Chân nhỏ -->
-        <ellipse cx="40" cy="78" rx="5" ry="3" fill="#ffffff" stroke="#dfe6e9" stroke-width="2"/>
-        <ellipse cx="60" cy="78" rx="5" ry="3" fill="#ffffff" stroke="#dfe6e9" stroke-width="2"/>
+        <!-- Thân -->
+        <ellipse cx="50" cy="68" rx="22" ry="17" fill="#ffffff" stroke="#dfe6e9" stroke-width="2"/>
 
         <!-- Tai Trái -->
-        <path d="M 30 30 L 15 8 L 42 22 Z" fill="#ffffff" stroke="#ff7675" stroke-width="2" stroke-linejoin="round"/>
-        <path d="M 27 25 L 18 12 L 36 20 Z" fill="#ff7675"/>
-        
+        <polygon points="30,30 12,10 38,22" fill="#ffffff" stroke="#ff7675" stroke-width="2" stroke-linejoin="round"/>
+        <polygon points="27,24 18,14 34,20" fill="#ff7675"/>
+
         <!-- Tai Phải -->
-        <path d="M 70 30 L 85 8 L 58 22 Z" fill="#ffffff" stroke="#ff7675" stroke-width="2" stroke-linejoin="round"/>
-        <path d="M 73 25 L 82 12 L 64 20 Z" fill="#ff7675"/>
+        <polygon points="70,30 88,10 62,22" fill="#ffffff" stroke="#ff7675" stroke-width="2" stroke-linejoin="round"/>
+        <polygon points="73,24 82,14 66,20" fill="#ff7675"/>
 
-        <!-- Mặt to tròn dễ thương -->
-        <ellipse cx="50" cy="45" rx="34" ry="24" fill="#ffffff" stroke="#dfe6e9" stroke-width="2"/>
-        
-        <!-- Má hồng -->
-        <ellipse cx="28" cy="49" rx="5" ry="3" fill="#ffb8b8" opacity="0.8"/>
-        <ellipse cx="72" cy="49" rx="5" ry="3" fill="#ffb8b8" opacity="0.8"/>
+        <!-- Đầu tròn Kawaii -->
+        <circle cx="50" cy="44" r="26" fill="#ffffff" stroke="#dfe6e9" stroke-width="2"/>
 
-        <!-- Mắt Anime long lanh -->
+        <!-- Má hồng bánh bao -->
+        <ellipse cx="32" cy="48" rx="4.5" ry="2.5" fill="#ffb8b8" opacity="0.8"/>
+        <ellipse cx="68" cy="48" rx="4.5" ry="2.5" fill="#ffb8b8" opacity="0.8"/>
+
+        <!-- Mắt long lanh anime -->
         <g id="foxEyesNormal">
-          <ellipse cx="36" cy="45" rx="4" ry="5.5" fill="#2d3436"/>
-          <circle cx="35" cy="42" r="1.8" fill="#ffffff"/>
-          <ellipse cx="64" cy="45" rx="4" ry="5.5" fill="#2d3436"/>
-          <circle cx="63" cy="42" r="1.8" fill="#ffffff"/>
+          <ellipse cx="39" cy="43" rx="3.5" ry="4.5" fill="#2d3436"/>
+          <circle cx="38" cy="41" r="1.5" fill="#ffffff"/>
+          <ellipse cx="61" cy="43" rx="3.5" ry="4.5" fill="#2d3436"/>
+          <circle cx="60" cy="41" r="1.5" fill="#ffffff"/>
         </g>
         <g id="foxEyesHappy" style="display: none;">
-          <path d="M 31 46 Q 36 41 41 46" stroke="#2d3436" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-          <path d="M 59 46 Q 64 41 69 46" stroke="#2d3436" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M 35 44 Q 39 39 43 44" stroke="#2d3436" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          <path d="M 57 44 Q 61 39 65 44" stroke="#2d3436" stroke-width="2.2" fill="none" stroke-linecap="round"/>
         </g>
         <g id="foxEyesSad" style="display: none;">
-          <path d="M 32 44 L 40 48" stroke="#2d3436" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M 68 44 L 60 48" stroke="#2d3436" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M 35 42 L 43 46" stroke="#2d3436" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M 65 42 L 57 46" stroke="#2d3436" stroke-width="2.2" stroke-linecap="round"/>
         </g>
 
-        <!-- Mũi và Miệng chữ W -->
-        <circle cx="50" cy="50" r="2.5" fill="#2d3436"/>
-        <path d="M 45 54 Q 47.5 57 50 54 Q 52.5 57 55 54" fill="none" stroke="#2d3436" stroke-width="2" stroke-linecap="round"/>
+        <!-- Mũi & miệng chữ w -->
+        <circle cx="50" cy="48" r="2" fill="#2d3436"/>
+        <path d="M 46 51 Q 48 53.5 50 51 Q 52 53.5 54 51" fill="none" stroke="#2d3436" stroke-width="1.8" stroke-linecap="round"/>
 
         <!-- Phụ kiện -->
         <g id="accGlasses" style="display: none;">
-          <rect x="25" y="40" width="18" height="12" rx="4" fill="none" stroke="#2d3436" stroke-width="2.5"/>
-          <rect x="57" y="40" width="18" height="12" rx="4" fill="none" stroke="#2d3436" stroke-width="2.5"/>
-          <line x1="43" y1="46" x2="57" y1="46" stroke="#2d3436" stroke-width="2.5"/>
+          <rect x="30" y="38" width="14" height="10" rx="3" fill="none" stroke="#2d3436" stroke-width="2.2"/>
+          <rect x="56" y="38" width="14" height="10" rx="3" fill="none" stroke="#2d3436" stroke-width="2.2"/>
+          <line x1="44" y1="43" x2="56" y1="43" stroke="#2d3436" stroke-width="2.2"/>
         </g>
         <g id="accCrown" style="display: none;">
-          <polygon points="40,25 44,14 50,20 56,14 60,25" fill="#f1c40f" stroke="#f39c12" stroke-width="1.5"/>
+          <polygon points="41,24 44,14 50,19 56,14 59,24" fill="#f1c40f" stroke="#f39c12" stroke-width="1.2"/>
         </g>
         <g id="accHat" style="display: none;">
-          <rect x="35" y="21" width="30" height="4" fill="#2c3e50" rx="2"/>
-          <rect x="40" y="8" width="20" height="14" fill="#2c3e50"/>
-          <rect x="40" y="17" width="20" height="4" fill="#e74c3c"/>
+          <rect x="36" y="20" width="28" height="3" fill="#2c3e50" rx="1"/>
+          <rect x="41" y="8" width="18" height="13" fill="#2c3e50"/>
+          <rect x="41" y="16" width="18" height="3" fill="#e74c3c"/>
         </g>
         <g id="accBow" style="display: none;">
-          <polygon points="40,65 50,68 40,71" fill="#e84393"/>
-          <polygon points="60,65 50,68 60,71" fill="#e84393"/>
-          <circle cx="50" cy="68" r="3.5" fill="#ff7675"/>
+          <polygon points="42,60 50,63 42,66" fill="#e84393"/>
+          <polygon points="58,60 50,63 58,66" fill="#e84393"/>
+          <circle cx="50" cy="63" r="3" fill="#ff7675"/>
         </g>
         <g id="accGem" style="display: none;">
-          <circle cx="50" cy="68" r="5" fill="#00cec9" stroke="#00b894" stroke-width="1.5"/>
+          <circle cx="50" cy="63" r="4.5" fill="#00cec9" stroke="#00b894" stroke-width="1.2"/>
         </g>
       </svg>
     </div>
 
     <div class="pet-stats">
       <div class="stat-bar-container">
-        <span>🍖 Độ no:</span>
+        <span>🍖 No:</span>
         <div class="stat-bar"><div class="stat-fill fill-hunger" id="hungerBar"></div></div>
       </div>
       <div class="stat-bar-container">
-        <span>❤️ Độ vui:</span>
+        <span>❤️ Vui:</span>
         <div class="stat-bar"><div class="stat-fill fill-joy" id="joyBar"></div></div>
       </div>
     </div>
 
     <div class="pet-actions">
-      <button class="btn btn-yellow" onclick="openShop()">🛍️ Cửa hàng Shop</button>
+      <button class="btn btn-yellow" onclick="openShop()">🛍️ Shop</button>
     </div>
   </div>
 
   <div class="container">
     <div id="topicScreen">
       <div class="special-topics">
-        <button class="btn btn-yellow" onclick="openSpecialTopic('saved')">⭐ Ôn Các Từ Đã Lưu</button>
-        <button class="btn btn-sec" onclick="openSpecialTopic('wrong')">❌ Ôn Các Từ Hay Sai</button>
+        <button class="btn btn-yellow" onclick="openSpecialTopic('saved')">⭐ Từ Đã Lưu</button>
+        <button class="btn btn-sec" onclick="openSpecialTopic('wrong')">❌ Từ Hay Sai</button>
       </div>
 
-      <h2 style="text-align:center; margin-bottom: 15px; color: var(--primary);">Chọn Chủ Đề Học 🎯</h2>
+      <h2 style="text-align:center; margin-bottom: 12px; color: var(--primary); font-size: 1.2rem;">Chọn Chủ Đề Học 🎯</h2>
       <div class="topics-grid" id="topicsGrid"></div>
     </div>
 
     <div id="gameScreen" style="display: none;">
       <button class="btn btn-sec" onclick="showTopicScreen()" style="float: left;">⬅ Trở về</button>
-      <h2 id="currentTopicTitle" style="margin-bottom: 15px; text-align: center;">Chủ đề 1</h2>
+      <h2 id="currentTopicTitle" style="margin-bottom: 12px; text-align: center; font-size: 1.2rem;">Chủ đề 1</h2>
 
       <div class="mode-select">
         <button class="btn" onclick="startMode('flashcard')">🃏 Lật Thẻ</button>
@@ -404,14 +378,14 @@
         <button class="btn btn-pink" onclick="startMode('typing')">✍️ Gõ Từ</button>
         <button class="btn btn-yellow" onclick="startMode('listening')">🎧 Nghe & Chọn</button>
         <button class="btn btn-sec" onclick="startMode('scramble')">🔤 Sắp Xếp Chữ</button>
-        <button class="btn btn-dark" onclick="startMode('timeattack')">⚡ Phản Xạ Nhanh</button>
+        <button class="btn btn-dark" onclick="startMode('timeattack')">⚡ Phản Xạ</button>
       </div>
 
       <div class="score-board" id="scoreBoard"></div>
 
       <!-- Games... -->
       <div id="flashcardGame" class="game-box">
-        <div style="position: relative; display: inline-block; width: 100%; max-width: 300px;">
+        <div style="position: relative; display: inline-block; width: 100%; max-width: 280px;">
           <button class="star-btn" id="starBtn" onclick="toggleSaveCurrentWord()">☆</button>
           <div class="flashcard" id="cardElement" onclick="flipCard()">
             <div class="flashcard-inner">
@@ -421,25 +395,25 @@
           </div>
         </div>
         <div>
-          <button class="btn btn-sec" onclick="prevCard()">◀ Từ trước</button>
-          <button class="btn btn-sec" onclick="nextCard()">Từ sau ▶</button>
+          <button class="btn btn-sec" onclick="prevCard()">◀ Trước</button>
+          <button class="btn btn-sec" onclick="nextCard()">Sau ▶</button>
         </div>
       </div>
 
       <div id="quizGame" class="game-box">
-        <h3 id="quizQuestion" style="font-size: 1.6rem; color: #0984e3; margin: 15px 0;">Question</h3>
+        <h3 id="quizQuestion" style="font-size: 1.4rem; color: #0984e3; margin: 12px 0;">Question</h3>
         <div class="quiz-options" id="quizOptions"></div>
         <div class="feedback" id="quizFeedback"></div>
       </div>
 
       <div id="matchingGame" class="game-box">
-        <p style="margin-bottom: 10px; font-weight: 800;">Chọn 1 từ tiếng Anh và 1 nghĩa tương ứng!</p>
+        <p style="margin-bottom: 8px; font-weight: 800; font-size: 0.9rem;">Chọn 1 từ tiếng Anh và 1 nghĩa tương ứng!</p>
         <div class="matching-grid" id="matchingGrid"></div>
       </div>
 
       <div id="typingGame" class="game-box">
         <p>Nghĩa tiếng Việt là:</p>
-        <h3 id="typingPrompt" style="font-size: 1.6rem; color: #e84393; margin: 10px 0;">Nghĩa</h3>
+        <h3 id="typingPrompt" style="font-size: 1.4rem; color: #e84393; margin: 10px 0;">Nghĩa</h3>
         <input type="text" id="typingInput" class="typing-input" placeholder="Gõ từ Tiếng Anh..." onkeyup="if(event.key==='Enter') checkTyping()">
         <br>
         <button class="btn btn-green" onclick="checkTyping()">Kiểm Tra 🚀</button>
@@ -447,31 +421,31 @@
       </div>
 
       <div id="listeningGame" class="game-box">
-        <h3 style="margin: 10px 0; color: #00b894;">🎧 Nghe phát âm và chọn nghĩa đúng!</h3>
-        <button class="btn btn-yellow" style="font-size: 1.2rem; padding: 12px 25px; margin: 10px 0;" onclick="speakCurrentWord()">🔊 Phát Âm Lại</button>
+        <h3 style="margin: 8px 0; color: #00b894; font-size: 1.1rem;">🎧 Nghe phát âm và chọn nghĩa đúng!</h3>
+        <button class="btn btn-yellow" style="font-size: 1rem; padding: 10px 20px; margin: 8px 0;" onclick="speakCurrentWord()">🔊 Phát Âm Lại</button>
         <div class="quiz-options" id="listeningOptions"></div>
         <div class="feedback" id="listeningFeedback"></div>
       </div>
 
       <div id="scrambleGame" class="game-box">
-        <p>Sắp xếp các chữ cái thành từ tiếng Anh đúng cho nghĩa:</p>
-        <h3 id="scrambleMeaning" style="font-size: 1.4rem; color: #e17055; margin: 10px 0;">Nghĩa</h3>
+        <p style="font-size: 0.9rem;">Sắp xếp chữ cái thành từ tiếng Anh đúng:</p>
+        <h3 id="scrambleMeaning" style="font-size: 1.2rem; color: #e17055; margin: 8px 0;">Nghĩa</h3>
         <div class="scramble-letters" id="scrambleSelected"></div>
-        <hr style="border: 1px dashed #b2bec3; width: 60%; margin: 10px auto;">
+        <hr style="border: 1px dashed #b2bec3; width: 60%; margin: 8px auto;">
         <div class="scramble-letters" id="scramblePool"></div>
-        <div style="margin-top: 10px;">
-          <button class="btn btn-sec" onclick="resetScramble()">Xóa lại 🔄</button>
+        <div style="margin-top: 8px;">
+          <button class="btn btn-sec" onclick="resetScramble()">Xóa 🔄</button>
           <button class="btn btn-green" onclick="checkScramble()">Kiểm tra ✨</button>
         </div>
         <div class="feedback" id="scrambleFeedback"></div>
       </div>
 
       <div id="timeAttackGame" class="game-box">
-        <h3 style="color: #d63031; margin-bottom: 5px;">⚡ Thử Thách 30 Giây ⚡</h3>
-        <div class="badge" style="display:inline-block; font-size: 1.1rem; margin-bottom: 10px;">⏱️ Thời gian: <span id="timerCount">30</span>s</div>
-        <h3 id="taQuestion" style="font-size: 1.5rem; color: #0984e3; margin: 10px 0;">Question</h3>
+        <h3 style="color: #d63031; margin-bottom: 4px;">⚡ Thử Thách 30 Giây ⚡</h3>
+        <div class="badge" style="display:inline-block; font-size: 1rem; margin-bottom: 8px;">⏱️ Thời gian: <span id="timerCount">30</span>s</div>
+        <h3 id="taQuestion" style="font-size: 1.4rem; color: #0984e3; margin: 8px 0;">Question</h3>
         <div class="quiz-options" id="taOptions"></div>
-        <button class="btn btn-green" id="taStartBtn" style="margin-top: 15px; font-size: 1.1rem;" onclick="startTimeAttack()">Bắt Đầu Ngay 🚀</button>
+        <button class="btn btn-green" id="taStartBtn" style="margin-top: 12px; font-size: 1rem;" onclick="startTimeAttack()">Bắt Đầu Ngay 🚀</button>
         <div class="feedback" id="taFeedback"></div>
       </div>
     </div>
@@ -483,7 +457,7 @@
         <h2>🛍️ Cửa Hàng Tiểu Bạch</h2>
         <button class="btn btn-dark" onclick="closeShop()">✕ Đóng</button>
       </div>
-      <p style="margin-top: 5px;">Dùng Xu 🪙 để mua đồ ăn và trang bị phụ kiện cho Tiểu Bạch nhé!</p>
+      <p style="margin-top: 5px; font-size: 0.88rem;">Dùng Xu 🪙 mua đồ ăn và trang bị cho Tiểu Bạch nhé!</p>
 
       <div class="shop-grid">
         <div class="shop-item">
@@ -530,7 +504,7 @@
         </div>
         <div class="shop-item">
           <div class="shop-item-icon">🔮</div>
-          <div class="shop-item-title">Ngọc Hồ Ly Linh Khí</div>
+          <div class="shop-item-title">Ngọc Hồ Ly</div>
           <div class="shop-item-price">80 Xu</div>
           <button class="btn btn-yellow" id="btnAccGem" onclick="buyOrEquip('gem', 80)">Mua 🔮</button>
         </div>
@@ -601,7 +575,7 @@
       const t = document.getElementById('toastMsg');
       t.innerText = msg;
       t.style.display = 'block';
-      setTimeout(() => { t.style.display = 'none'; }, 3000);
+      setTimeout(() => { t.style.display = 'none'; }, 2500);
     }
 
     function initApp() {
@@ -615,7 +589,7 @@
       isDarkMode = !isDarkMode;
       document.body.classList.toggle('dark-mode', isDarkMode);
       localStorage.setItem('dark_mode', isDarkMode);
-      document.getElementById('darkBtn').innerText = isDarkMode ? '☀️ Chế độ sáng' : '🌙 Chế độ tối';
+      document.getElementById('darkBtn').innerText = isDarkMode ? '☀️ Sáng' : '🌙 Tối';
     }
 
     function updateHeaderBadges() {
@@ -643,13 +617,13 @@
         wrongWords.push(item);
         updateHeaderBadges();
       }
-      setFoxMood('sad', 'Cố lên bạn ơi! Thử lại câu này nhé Kyu~');
+      setFoxMood('sad', 'Cố lên bạn ơi! Thử lại nhé Kyu~');
     }
 
     function removeWrongWord(item) {
       wrongWords = wrongWords.filter(w => w.en.toLowerCase() !== item.en.toLowerCase());
       updateHeaderBadges();
-      setFoxMood('happy', 'Giỏi quá! +10 Xu 🪙 nè Kyu~');
+      setFoxMood('happy', 'Giỏi quá! +10 Xu 🪙 Kyu~');
     }
 
     function updatePetUI() {
@@ -696,7 +670,7 @@
     function closeShop() { document.getElementById('shopModal').style.display = 'none'; }
 
     function buyFood(type, price, hungerAmount) {
-      if(coins < price) { showToast('Bạn chưa đủ Xu 🪙 rồi! Hãy làm thêm câu hỏi để nhận Xu.'); return; }
+      if(coins < price) { showToast('Bạn chưa đủ Xu 🪙 rồi! Học thêm nhé.'); return; }
       coins -= price;
       foxHunger = Math.min(100, foxHunger + hungerAmount);
       foxJoy = Math.min(100, foxJoy + 10);
@@ -753,7 +727,7 @@
         card.className = `topic-card ${isUnlocked ? '' : 'locked'}`;
         card.innerHTML = `<div class="topic-icon">${isUnlocked ? '🦊' : '🔒'}</div><div class="topic-title">Chủ đề ${i}</div>`;
         if (isUnlocked) card.onclick = () => selectTopic(i);
-        else card.onclick = () => showToast(`Chủ đề ${i} đang khóa! Tạo tab "Chủ đề ${i}" trong Google Sheet để mở.`);
+        else card.onclick = () => showToast(`Chủ đề ${i} đang khóa! Thêm vào Google Sheet để mở.`);
         grid.appendChild(card);
       }
     }
@@ -811,13 +785,13 @@
 
     function openSpecialTopic(type) {
       if(type === 'saved') {
-        if(savedWords.length === 0) { showToast('Bạn chưa lưu từ nào! Bấm ☆ ở góc thẻ để lưu nhé.'); return; }
+        if(savedWords.length === 0) { showToast('Bạn chưa lưu từ nào! Bấm ☆ ở góc thẻ.'); return; }
         vocabList = [...savedWords];
-        openGameScreen(`⭐ Các từ đã lưu (${vocabList.length} từ)`);
+        openGameScreen(`⭐ Từ đã lưu (${vocabList.length} từ)`);
       } else if(type === 'wrong') {
-        if(wrongWords.length === 0) { showToast('Tuyệt vời! Không có từ nào bị sai 🎉'); return; }
+        if(wrongWords.length === 0) { showToast('Tuyệt vời! Không có từ nào hay sai 🎉'); return; }
         vocabList = [...wrongWords];
-        openGameScreen(`❌ Các từ hay sai (${vocabList.length} từ)`);
+        openGameScreen(`❌ Từ hay sai (${vocabList.length} từ)`);
       }
     }
 
@@ -909,10 +883,10 @@
           } else {
             addWrongWord(current);
             playSound('wrong');
-            document.getElementById('quizFeedback').innerHTML = `<span style="color:#d63031">Đáp án đúng là: ${current.vi}</span>`;
+            document.getElementById('quizFeedback').innerHTML = `<span style="color:#d63031">Đáp án: ${current.vi}</span>`;
           }
           quizIdx++;
-          setTimeout(showNextQuizQuestion, 850);
+          setTimeout(showNextQuizQuestion, 800);
         };
         optContainer.appendChild(btn);
       });
@@ -959,7 +933,7 @@
                 c1.element.classList.remove('selected');
                 c2.element.classList.remove('selected');
                 selectedCards = [];
-              }, 700);
+              }, 600);
             }
           }
         };
@@ -972,7 +946,7 @@
     function initTyping() { typeIdx = 0; showTypingWord(); }
     function showTypingWord() {
       if(typeIdx >= vocabList.length) {
-        document.getElementById('typingPrompt').innerText = '🎉 Bạn đã gõ xong tất cả từ!';
+        document.getElementById('typingPrompt').innerText = '🎉 Hoàn thành gõ từ!';
         document.getElementById('typingInput').style.display = 'none';
         return;
       }
@@ -993,7 +967,7 @@
         playSound('correct');
         document.getElementById('typingFeedback').innerHTML = '<span style="color:#00b894">Xuất sắc! +10 Xu 🪙</span>';
         typeIdx++;
-        setTimeout(showTypingWord, 850);
+        setTimeout(showTypingWord, 800);
       } else {
         addWrongWord(current);
         playSound('wrong');
@@ -1011,7 +985,7 @@
         utterance.lang = 'en-US';
         window.speechSynthesis.speak(utterance);
       } else {
-        showToast('Trình duyệt không hỗ trợ phát âm thanh.');
+        showToast('Trình duyệt không hỗ trợ phát âm.');
       }
     }
     function showNextListening() {
@@ -1047,10 +1021,10 @@
           } else {
             addWrongWord(current);
             playSound('wrong');
-            document.getElementById('listeningFeedback').innerHTML = `<span style="color:#d63031">Sai rồi! Đáp án là: ${current.vi}</span>`;
+            document.getElementById('listeningFeedback').innerHTML = `<span style="color:#d63031">Đáp án: ${current.vi}</span>`;
           }
           listenIdx++;
-          setTimeout(showNextListening, 1000);
+          setTimeout(showNextListening, 900);
         };
         optContainer.appendChild(btn);
       });
@@ -1112,7 +1086,7 @@
         playSound('correct');
         document.getElementById('scrambleFeedback').innerHTML = '<span style="color:#00b894">Chính xác! +15 Xu 🪙</span>';
         scrIdx++;
-        setTimeout(loadNextScramble, 900);
+        setTimeout(loadNextScramble, 800);
       } else {
         playSound('wrong');
         document.getElementById('scrambleFeedback').innerHTML = '<span style="color:#d63031">Chưa đúng, thử lại nhé!</span>';
@@ -1128,7 +1102,7 @@
       document.getElementById('taStartBtn').style.display = 'inline-block';
       document.getElementById('timerCount').innerText = '30';
       document.getElementById('taFeedback').innerText = '';
-      document.getElementById('scoreBoard').innerText = 'Bấm bắt đầu để thử thách phản xạ!';
+      document.getElementById('scoreBoard').innerText = 'Bấm bắt đầu thử thách phản xạ!';
     }
     function startTimeAttack() {
       taScore = 0;
@@ -1148,7 +1122,7 @@
           document.getElementById('taOptions').style.display = 'none';
           document.getElementById('taStartBtn').style.display = 'inline-block';
           document.getElementById('taStartBtn').innerText = 'Chơi Lại ⚡';
-          document.getElementById('taFeedback').innerHTML = `<span style="color:#6c5ce7">Hết giờ! Bạn đạt được ${taScore} điểm và nhận ${taScore} Xu thưởng 🎉</span>`;
+          document.getElementById('taFeedback').innerHTML = `<span style="color:#6c5ce7">Hết giờ! Bạn đạt ${taScore} điểm và nhận ${taScore} Xu thưởng 🎉</span>`;
           addReward(taScore, taScore);
         }
       }, 1000);
