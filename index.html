@@ -261,55 +261,76 @@
   </div>
 
   <div class="header">
-    <h1>🦊 Tiểu Bạch English 🦊</h1>
+    <h1>🦊 <strong>Tiểu Bạch English</strong> 🦊</h1>
   </div>
 
   <div class="pet-section">
     <div class="fox-avatar-container" onclick="clickFox()">
       <div class="fox-speech-bubble" id="foxBubble">Kyu~ Mua đùi gà cho mình nhé!</div>
       
-      <!-- BÉ HỒ LY TIỂU BẠCH ANIME MỀM MẠI, ĐUÔI BÔNG XÙ -->
+      <!-- BÉ HỒ LY TIỂU BẠCH ANIME MỀM MẠI (Đã thiết kế lại theo hình) -->
       <svg class="fox-svg" viewBox="0 0 100 100">
         <!-- Đuôi bông xù to bự phía sau -->
-        <path d="M 38 75 C 8 85, -2 45, 14 30 C 24 22, 40 42, 36 68 Z" fill="#ffffff" stroke="#ff7675" stroke-width="2.5" stroke-linejoin="round"/>
-        <path d="M 14 30 C 10 36, 18 44, 26 38 C 24 32, 20 31, 14 30 Z" fill="#ff7675"/>
+        <path d="M 38 75 C 8 85, -2 45, 14 30 C 24 22, 40 42, 36 68 Z" fill="#ffffff" stroke="#d63031" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M 14 30 C 10 36, 18 44, 26 38 C 24 32, 20 31, 14 30 Z" fill="#d63031"/>
 
         <!-- Thân mềm mại -->
         <ellipse cx="52" cy="68" rx="20" ry="16" fill="#ffffff" stroke="#dfe6e9" stroke-width="2"/>
+        
+        <!-- Tay màu đỏ bám phía trước -->
+        <ellipse cx="42" cy="72" rx="4.5" ry="7" fill="#d63031"/>
+        <ellipse cx="62" cy="72" rx="4.5" ry="7" fill="#d63031"/>
 
         <!-- Tai Anime to mềm mại -->
-        <path d="M 32 30 C 24 16, 12 6, 18 12 C 24 18, 30 24, 38 26 Z" fill="#ffffff" stroke="#ff7675" stroke-width="2.5" stroke-linejoin="round"/>
-        <path d="M 28 24 C 22 15, 15 9, 20 13 C 25 17, 28 20, 32 23 Z" fill="#ff7675"/>
+        <path d="M 32 30 C 24 16, 12 6, 18 12 C 24 18, 30 24, 38 26 Z" fill="#ffffff" stroke="#d63031" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M 28 24 C 22 15, 15 9, 20 13 C 25 17, 28 20, 32 23 Z" fill="#d63031"/>
 
-        <path d="M 68 30 C 76 16, 88 6, 82 12 C 76 18, 70 24, 62 26 Z" fill="#ffffff" stroke="#ff7675" stroke-width="2.5" stroke-linejoin="round"/>
-        <path d="M 72 24 C 78 15, 85 9, 80 13 C 75 17, 72 20, 68 23 Z" fill="#ff7675"/>
+        <path d="M 68 30 C 76 16, 88 6, 82 12 C 76 18, 70 24, 62 26 Z" fill="#ffffff" stroke="#d63031" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M 72 24 C 78 15, 85 9, 80 13 C 75 17, 72 20, 68 23 Z" fill="#d63031"/>
 
         <!-- Đầu tròn anime -->
         <circle cx="50" cy="45" r="26" fill="#ffffff" stroke="#dfe6e9" stroke-width="2"/>
+
+        <!-- Ấn chú trên trán -->
+        <path d="M 50 24 L 53 30 L 50 35 L 47 30 Z" fill="#d63031"/>
+        <path d="M 50 18 L 51.5 21 L 50 23 L 48.5 21 Z" fill="#d63031"/>
+        <path d="M 41 27 Q 44 26 45 28" fill="none" stroke="#d63031" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M 59 27 Q 56 26 55 28" fill="none" stroke="#d63031" stroke-width="1.8" stroke-linecap="round"/>
 
         <!-- Má hồng bánh bao phúng phính -->
         <ellipse cx="31" cy="50" rx="5" ry="3" fill="#ffb8b8" opacity="0.85"/>
         <ellipse cx="69" cy="50" rx="5" ry="3" fill="#ffb8b8" opacity="0.85"/>
 
-        <!-- Mắt Anime long lanh -->
+        <!-- Vệt đỏ ở má -->
+        <path d="M 26 48 Q 28 50 25 52" fill="none" stroke="#d63031" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M 74 48 Q 72 50 75 52" fill="none" stroke="#d63031" stroke-width="1.5" stroke-linecap="round"/>
+
+        <!-- Mắt Anime to tròn, long lanh, màu đỏ -->
         <g id="foxEyesNormal">
-          <ellipse cx="38" cy="43" rx="3.8" ry="5" fill="#2d3436"/>
-          <circle cx="37" cy="41" r="1.5" fill="#ffffff"/>
-          <ellipse cx="62" cy="43" rx="3.8" ry="5" fill="#2d3436"/>
-          <circle cx="61" cy="41" r="1.5" fill="#ffffff"/>
+          <ellipse cx="37" cy="43" rx="5.5" ry="7" fill="#d63031"/>
+          <ellipse cx="37" cy="43" rx="3.5" ry="5.5" fill="#800000"/>
+          <circle cx="35" cy="39" r="2.2" fill="#ffffff"/>
+          <circle cx="38" cy="45" r="1.2" fill="#ffffff"/>
+
+          <ellipse cx="63" cy="43" rx="5.5" ry="7" fill="#d63031"/>
+          <ellipse cx="63" cy="43" rx="3.5" ry="5.5" fill="#800000"/>
+          <circle cx="61" cy="39" r="2.2" fill="#ffffff"/>
+          <circle cx="64" cy="45" r="1.2" fill="#ffffff"/>
         </g>
         <g id="foxEyesHappy" style="display: none;">
-          <path d="M 34 44 Q 38 38 42 44" stroke="#2d3436" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-          <path d="M 58 44 Q 62 38 66 44" stroke="#2d3436" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M 32 44 Q 37 36 42 44" stroke="#d63031" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M 58 44 Q 63 36 68 44" stroke="#d63031" stroke-width="2.5" fill="none" stroke-linecap="round"/>
         </g>
         <g id="foxEyesSad" style="display: none;">
-          <path d="M 34 42 L 42 46" stroke="#2d3436" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M 66 42 L 58 46" stroke="#2d3436" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M 32 40 L 42 46" stroke="#d63031" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M 68 40 L 58 46" stroke="#d63031" stroke-width="2.5" stroke-linecap="round"/>
         </g>
 
-        <!-- Mũi & miệng chữ w xinh xắn -->
+        <!-- Mũi & miệng chữ w có nanh -->
         <circle cx="50" cy="49" r="2" fill="#2d3436"/>
-        <path d="M 45 52 Q 48 55 50 52 Q 52 55 55 52" fill="none" stroke="#2d3436" stroke-width="2" stroke-linecap="round"/>
+        <path d="M 47 52 L 48 54 L 49 52 Z" fill="#2d3436"/>
+        <path d="M 53 52 L 52 54 L 51 52 Z" fill="#2d3436"/>
+        <path d="M 45 51 Q 48 54 50 51 Q 52 54 55 51" fill="none" stroke="#2d3436" stroke-width="2" stroke-linecap="round"/>
 
         <!-- Phụ kiện -->
         <g id="accGlasses" style="display: none;">
