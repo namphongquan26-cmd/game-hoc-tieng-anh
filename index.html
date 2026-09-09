@@ -1,65 +1,67 @@
 <!DOCTYPE html>
 <html lang="vi">
-  <style>
-/* ==========================================
-   ÉP GIAO DIỆN MOBILE ĐẸP NÉT (MAX 600PX)
-   ========================================== */
-@media screen and (max-width: 600px) {
-
-    /* --- 1. SỬA KHUNG SHEET ID --- */
-    /* Tim tat ca khung chua o nhap va ep xep thanh 1 cot */
-    div:has(> input), .input-group, .sheet-container {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-        gap: 8px !important;
-        align-items: stretch !important;
-    }
-
-    /* O nhap ID va Nut Luu tu mo rong 100% width */
-    input[type="text"], input[placeholder*="Sheet"], button {
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-    }
-
-    /* Nut Luu & Tai nam ngang dep mat */
-    div:has(> input) button {
-        height: 42px !important;
-        white-space: nowrap !important;
-    }
-
-
-    /* --- 2. SỬA GAME GHÉP ĐÔI THÀNH 2 CỘT --- */
-    /* Chuyen toan bo luoi the game tu 4 cot sang 2 cot rộng rai */
-    div[style*="grid"], .grid-container, .card-grid, .matching-grid {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important; /* Bat buoc 2 cot */
-        gap: 10px !important;
-    }
-
-    /* The game co do cao vua van, chu khong bi dung vertically */
-    div[style*="grid"] button, .card, .card-btn {
-        min-height: 55px !important;
-        padding: 10px 6px !important;
-        font-size: 14px !important;
-        word-break: normal !important;
-    }
-
-    /* --- 3. SỬA NÚT TRỞ VỀ --- */
-    /* Dua nut Tro ve va Tieu de thanh 2 hang rieng */
-    .header-bar, div:has(> button) {
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-    }
-}
-</style>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bé Học Tiếng Anh cùng Mèo Miu Miu 🐱</title>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
+  
   <style>
+    /* ==========================================
+       1. TẤT CẢ CSS CHÍNH (GIAO DIỆN CHUNG) CỦA BẠN DÁN Ở ĐÂY
+       ========================================== */
+
+
+
+
+    /* ==========================================
+       2. ÉP GIAO DIỆN MOBILE ĐẸP NÉT (MAX 600PX)
+       ========================================== */
+    @media screen and (max-width: 600px) {
+
+        /* --- 1. SỬA KHUNG SHEET ID --- */
+        div:has(> input), .input-group, .sheet-container {
+            display: flex !important;
+            flex-direction: column !important;
+            width: 100% !important;
+            gap: 8px !important;
+            align-items: stretch !important;
+        }
+
+        input[type="text"], input[placeholder*="Sheet"], button {
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+        div:has(> input) button {
+            height: 42px !important;
+            white-space: nowrap !important;
+        }
+
+
+        /* --- 2. SỬA GAME GHÉP ĐÔI THÀNH 2 CỘT --- */
+        div[style*="grid"], .grid-container, .card-grid, .matching-grid {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
+        }
+
+        div[style*="grid"] button, .card, .card-btn {
+            min-height: 55px !important;
+            padding: 10px 6px !important;
+            font-size: 14px !important;
+            word-break: normal !important;
+        }
+
+        /* --- 3. SỬA NÚT TRỞ VỀ --- */
+        .header-bar, div:has(> button) {
+            flex-wrap: wrap !important;
+            justify-content: center !important;
+        }
+    }
+  </style>
+</head>
     :root {
       --bg: linear-gradient(135deg, #a8edf0 0%, #fed6e3 100%);
       --card-bg: rgba(255, 255, 255, 0.92);
