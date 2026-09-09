@@ -40,7 +40,6 @@
       color: var(--text);
     }
 
-    /* Top Navigation Bar */
     .top-bar {
       width: 100%;
       max-width: 850px;
@@ -67,7 +66,6 @@
     .header { text-align: center; margin-bottom: 10px; }
     .header h1 { font-family: 'Fredoka One', cursive; font-size: 2rem; color: #ff6b6b; text-shadow: 2px 2px 0px #fff; }
 
-    /* PET CONTAINER SECTION */
     .pet-section {
       width: 100%;
       max-width: 850px;
@@ -120,7 +118,6 @@
       border-color: #fdcb6e transparent;
     }
 
-    /* SVG Cat & Accessories */
     .cat-svg { width: 100px; height: 100px; transition: transform 0.2s; }
     .cat-svg:hover { transform: scale(1.08); }
 
@@ -138,12 +135,8 @@
 
     .pet-actions { display: flex; gap: 8px; }
 
-    /* SHEET INPUT BAR (ẨN THEO YÊU CẦU) */
-    .sheet-input-box {
-      display: none !important;
-    }
+    .sheet-input-box { display: none !important; }
 
-    /* BUTTONS */
     .btn {
       background: var(--primary);
       color: white;
@@ -167,7 +160,6 @@
     .btn-yellow { background: #fdcb6e; color: #2d3436; box-shadow: 0 4px 0 #e17055; }
     .btn-dark { background: #636e72; box-shadow: 0 4px 0 #2d3436; }
 
-    /* MAIN CONTAINER */
     .container {
       width: 100%;
       max-width: 850px;
@@ -180,7 +172,6 @@
 
     .special-topics { display: flex; gap: 10px; margin-bottom: 18px; justify-content: center; flex-wrap: wrap; }
 
-    /* TOPIC GRID */
     .topics-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
@@ -201,12 +192,10 @@
     .topic-icon { font-size: 1.8rem; margin-bottom: 4px; }
     .topic-title { font-weight: 800; font-size: 0.88rem; }
 
-    /* GAME PLAY AREA */
     .game-box { display: none; text-align: center; }
     .active { display: block; }
     .mode-select { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 18px; }
 
-    /* FLASHCARD */
     .flashcard { width: 100%; max-width: 300px; height: 180px; margin: 15px auto; perspective: 1000px; cursor: pointer; }
     .flashcard-inner {
       width: 100%; height: 100%; position: relative; transform-style: preserve-3d;
@@ -223,7 +212,6 @@
 
     .star-btn { position: absolute; top: 10px; right: 15px; font-size: 1.5rem; cursor: pointer; z-index: 10; background: none; border: none; }
 
-    /* QUIZ & MATCHING */
     .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
     .quiz-btn {
       background: var(--box-bg); color: var(--text); border: 3px solid var(--secondary);
@@ -252,7 +240,6 @@
     .feedback { font-size: 1.1rem; font-weight: 800; margin: 10px 0; min-height: 28px; }
     .score-board { font-size: 1.05rem; font-weight: 800; color: #6c5ce7; margin-bottom: 8px; }
 
-    /* SHOP MODAL */
     .modal-overlay {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
@@ -272,54 +259,22 @@
     .shop-item-title { font-weight: 800; font-size: 0.9rem; }
     .shop-item-price { color: #e17055; font-weight: 900; font-size: 0.85rem; }
 
-    /* ==========================================
-       TỐI ƯU DÀNH RIÊNG CHO DI ĐỘNG (MAX 600PX)
-       ========================================== */
     @media screen and (max-width: 600px) {
       body { padding: 8px; }
-
       .header h1 { font-size: 1.6rem; }
-
       .top-bar { gap: 5px; justify-content: center; }
       .badge { padding: 4px 10px; font-size: 0.8rem; }
       #darkBtn { font-size: 0.8rem; padding: 5px 12px; }
-
       .pet-section { padding: 12px 10px; gap: 10px; border-radius: 20px; }
       .cat-avatar-container { width: 90px; height: 90px; }
       .cat-svg { width: 85px; height: 85px; }
-
       .container { padding: 14px; border-radius: 20px; }
-
-      /* GAME GHÉP ĐÔI TRÊN MOBILE: BẮT BUỘC 2 CỘT */
-      .matching-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 8px !important;
-      }
-      .match-card {
-        min-height: 55px;
-        padding: 8px 4px;
-        font-size: 0.82rem;
-      }
-
-      /* TRẮC NGHIỆM TRÊN MOBILE: 1 CỘT ĐỂ DỄ BẤM */
-      .quiz-options {
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
-      .quiz-btn {
-        padding: 10px;
-        font-size: 0.95rem;
-      }
-
-      .mode-select .btn {
-        padding: 6px 12px;
-        font-size: 0.82rem;
-      }
-
-      .topics-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
-      }
+      .matching-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
+      .match-card { min-height: 55px; padding: 8px 4px; font-size: 0.82rem; }
+      .quiz-options { grid-template-columns: 1fr; gap: 8px; }
+      .quiz-btn { padding: 10px; font-size: 0.95rem; }
+      .mode-select .btn { padding: 6px 12px; font-size: 0.82rem; }
+      .topics-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
       .topic-card { padding: 10px 3px; }
       .topic-icon { font-size: 1.5rem; }
       .topic-title { font-size: 0.78rem; }
@@ -345,23 +300,15 @@
   <div class="pet-section">
     <div class="cat-avatar-container" onclick="clickCat()">
       <div class="cat-speech-bubble" id="catBubble">Meow~ Học bài tích xu mua cá cho Miu Miu nha!</div>
-      
-      <!-- SVG CAT WRAPPER -->
       <svg class="cat-svg" viewBox="0 0 100 100">
-        <!-- Tail -->
         <path d="M 20 75 Q 5 60 10 40 Q 15 35 18 45 Q 12 60 25 70 Z" fill="#ff9f43"/>
-        <!-- Body -->
         <ellipse cx="50" cy="70" rx="25" ry="20" fill="#ff9f43"/>
         <ellipse cx="50" cy="72" rx="16" ry="14" fill="#fff3e0"/>
-        <!-- Head -->
         <circle cx="50" cy="42" r="22" fill="#ff9f43"/>
-        <!-- Ears -->
         <polygon points="32,25 24,8 42,21" fill="#ff9f43"/>
         <polygon points="34,24 27,12 40,21" fill="#ffaa5b"/>
         <polygon points="68,25 76,8 58,21" fill="#ff9f43"/>
         <polygon points="66,24 73,12 60,21" fill="#ffaa5b"/>
-        
-        <!-- Face Expressions -->
         <g id="catEyesNormal">
           <circle cx="41" cy="39" r="3.5" fill="#2d3436"/>
           <circle cx="59" cy="39" r="3.5" fill="#2d3436"/>
@@ -376,16 +323,12 @@
           <path d="M 37 36 L 45 41" stroke="#2d3436" stroke-width="2.5" stroke-linecap="round"/>
           <path d="M 63 36 L 55 41" stroke="#2d3436" stroke-width="2.5" stroke-linecap="round"/>
         </g>
-        
-        <!-- Nose & Whiskers -->
         <polygon points="48,44 52,44 50,47" fill="#ff7675"/>
         <path d="M 50 47 Q 46 51 43 49 M 50 47 Q 54 51 57 49" stroke="#2d3436" stroke-width="1.5" fill="none"/>
         <line x1="25" y1="41" x2="35" y1="42" stroke="#2d3436" stroke-width="1"/>
         <line x1="24" y1="46" x2="35" y1="45" stroke="#2d3436" stroke-width="1"/>
         <line x1="75" y1="41" x2="65" y1="42" stroke="#2d3436" stroke-width="1"/>
         <line x1="76" y1="46" x2="65" y1="45" stroke="#2d3436" stroke-width="1"/>
-
-        <!-- WEARABLE ACCESSORIES -->
         <g id="accGlasses" style="display: none;">
           <rect x="32" y="34" width="16" height="10" rx="3" fill="none" stroke="#2d3436" stroke-width="2.5"/>
           <rect x="52" y="34" width="16" height="10" rx="3" fill="none" stroke="#2d3436" stroke-width="2.5"/>
@@ -407,7 +350,6 @@
       </svg>
     </div>
 
-    <!-- PET STATS & ACTION BUTTONS -->
     <div class="pet-stats">
       <div class="stat-bar-container">
         <span>🍖 Độ no:</span>
@@ -424,14 +366,11 @@
     </div>
   </div>
 
-  <!-- SHEET ID INPUT (ĐÃ ẨN) -->
   <div class="sheet-input-box">
     <input type="text" id="sheetIdInput">
   </div>
 
-  <!-- MAIN CONTAINER -->
   <div class="container">
-    <!-- SCREEN 1: TOPIC SELECTION -->
     <div id="topicScreen">
       <div class="special-topics">
         <button class="btn btn-yellow" onclick="openSpecialTopic('saved')">⭐ Ôn Các Từ Đã Lưu</button>
@@ -442,7 +381,6 @@
       <div class="topics-grid" id="topicsGrid"></div>
     </div>
 
-    <!-- SCREEN 2: GAME AREA -->
     <div id="gameScreen" style="display: none;">
       <button class="btn btn-sec" onclick="showTopicScreen()" style="float: left;">⬅ Trở về</button>
       <h2 id="currentTopicTitle" style="margin-bottom: 15px; text-align: center;">Chủ đề 1</h2>
@@ -456,7 +394,6 @@
 
       <div class="score-board" id="scoreBoard"></div>
 
-      <!-- Mode 1: Flashcard -->
       <div id="flashcardGame" class="game-box">
         <div style="position: relative; display: inline-block; width: 100%; max-width: 300px;">
           <button class="star-btn" id="starBtn" onclick="toggleSaveCurrentWord()">☆</button>
@@ -473,20 +410,17 @@
         </div>
       </div>
 
-      <!-- Mode 2: Quiz -->
       <div id="quizGame" class="game-box">
         <h3 id="quizQuestion" style="font-size: 1.6rem; color: #0984e3; margin: 15px 0;">Question</h3>
         <div class="quiz-options" id="quizOptions"></div>
         <div class="feedback" id="quizFeedback"></div>
       </div>
 
-      <!-- Mode 3: Matching -->
       <div id="matchingGame" class="game-box">
         <p style="margin-bottom: 10px; font-weight: 800;">Chọn 1 từ tiếng Anh và 1 nghĩa tương ứng!</p>
         <div class="matching-grid" id="matchingGrid"></div>
       </div>
 
-      <!-- Mode 4: Typing -->
       <div id="typingGame" class="game-box">
         <p>Nghĩa tiếng Việt là:</p>
         <h3 id="typingPrompt" style="font-size: 1.6rem; color: #e84393; margin: 10px 0;">Nghĩa</h3>
@@ -498,7 +432,6 @@
     </div>
   </div>
 
-  <!-- SHOP MODAL -->
   <div class="modal-overlay" id="shopModal">
     <div class="modal-content">
       <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -508,7 +441,6 @@
       <p style="margin-top: 5px;">Dùng Xu 🪙 từ bài học để chăm sóc Miu Miu nhé!</p>
 
       <div class="shop-grid">
-        <!-- Foods -->
         <div class="shop-item">
           <div class="shop-item-icon">🐟</div>
           <div class="shop-item-title">Cá Ngừ</div>
@@ -527,8 +459,6 @@
           <div class="shop-item-price">30 Xu (+40 No/Vui)</div>
           <button class="btn btn-green" onclick="buyFood('cake', 30, 40)">Mua 🍰</button>
         </div>
-
-        <!-- Accessories -->
         <div class="shop-item">
           <div class="shop-item-icon">🕶️</div>
           <div class="shop-item-title">Kính Mát Ngầu</div>
@@ -558,10 +488,8 @@
   </div>
 
   <script>
-    // --- DEFAULT SHEET ID ---
     const DEFAULT_SHEET_ID = '12uCvxbX09mwJiCFCV2dMLuvx6KLM0d2RBUbHyg3_Ogw';
 
-    // --- LOCAL STORAGE DATA ---
     let SHEET_ID = localStorage.getItem('user_sheet_id') || DEFAULT_SHEET_ID;
     let coins = parseInt(localStorage.getItem('cat_coins') || '50');
     let totalScore = parseInt(localStorage.getItem('total_score') || '0');
@@ -569,7 +497,6 @@
     let wrongWords = JSON.parse(localStorage.getItem('wrong_words') || '[]');
     let isDarkMode = localStorage.getItem('dark_mode') === 'true';
 
-    // Pet stats
     let catHunger = parseInt(localStorage.getItem('cat_hunger') || '80');
     let catJoy = parseInt(localStorage.getItem('cat_joy') || '80');
     let catInventory = JSON.parse(localStorage.getItem('cat_inventory') || '[]');
@@ -579,7 +506,6 @@
     let currentTopicIndex = 0;
     const totalTopics = 15;
 
-    // --- SOUND SYNTHESIZER (Web Audio API) ---
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     function playSound(type) {
       if (audioCtx.state === 'suspended') audioCtx.resume();
@@ -618,7 +544,6 @@
       }
     }
 
-    // --- INITIALIZE APP ---
     function initApp() {
       if(isDarkMode) document.body.classList.add('dark-mode');
       const input = document.getElementById('sheetIdInput');
@@ -660,7 +585,7 @@
         wrongWords.push(item);
         updateHeaderBadges();
       }
-      setCatMood('sad', 'Cố lên bn ơi! Thử lại câu này nhé Meow~');
+      setCatMood('sad', 'Cố lên bạn ơi! Thử lại câu này nhé Meow~');
     }
 
     function removeWrongWord(item) {
@@ -669,7 +594,6 @@
       setCatMood('happy', 'Giỏi quá! +10 Xu 🪙 nè Meow~');
     }
 
-    // --- PET CAT LOGIC ---
     function updatePetUI() {
       document.getElementById('hungerBar').style.width = catHunger + '%';
       document.getElementById('joyBar').style.width = catJoy + '%';
@@ -679,7 +603,6 @@
       localStorage.setItem('cat_inventory', JSON.stringify(catInventory));
       localStorage.setItem('cat_equipped', JSON.stringify(catEquipped));
 
-      // Show/Hide Accessories
       document.getElementById('accGlasses').style.display = catEquipped.includes('glasses') ? 'block' : 'none';
       document.getElementById('accCrown').style.display = catEquipped.includes('crown') ? 'block' : 'none';
       document.getElementById('accHat').style.display = catEquipped.includes('hat') ? 'block' : 'none';
@@ -710,24 +633,23 @@
       updatePetUI();
     }
 
-    // --- SHOP LOGIC ---
     function openShop() { document.getElementById('shopModal').style.display = 'flex'; }
     function closeShop() { document.getElementById('shopModal').style.display = 'none'; }
 
     function buyFood(type, price, hungerAmount) {
-      if(coins < price) { alert('Bn chưa đủ Xu 🪙 rồi! Hãy làm thêm câu hỏi để nhận thêm Xu nhé.'); return; }
+      if(coins < price) { alert('Bạn chưa đủ Xu 🪙 rồi! Hãy làm thêm câu hỏi để nhận thêm Xu nhé.'); return; }
       coins -= price;
       catHunger = Math.min(100, catHunger + hungerAmount);
       catJoy = Math.min(100, catJoy + 10);
       playSound('buy');
-      setCatMood('happy', 'Cảm ơn bn! Món này ngon quá Meow~ 😋');
+      setCatMood('happy', 'Cảm ơn bạn! Món này ngon quá Meow~ 😋');
       updateHeaderBadges();
       updatePetUI();
     }
 
     function buyOrEquip(itemKey, price) {
       if(!catInventory.includes(itemKey)) {
-        if(coins < price) { alert('Bn chưa đủ Xu 🪙 để mua đồ trang trí này!'); return; }
+        if(coins < price) { alert('Bạn chưa đủ Xu 🪙 để mua đồ trang trí này!'); return; }
         coins -= price;
         catInventory.push(itemKey);
         catEquipped.push(itemKey);
@@ -763,7 +685,6 @@
       });
     }
 
-    // --- SHEET DATA & TOPICS ---
     function initTopicGrid() {
       const grid = document.getElementById('topicsGrid');
       grid.innerHTML = '';
@@ -831,7 +752,7 @@
 
     function openSpecialTopic(type) {
       if(type === 'saved') {
-        if(savedWords.length === 0) { alert('Bn chưa lưu từ nào! Bấm ☆ ở góc thẻ để lưu nhé.'); return; }
+        if(savedWords.length === 0) { alert('Bạn chưa lưu từ nào! Bấm ☆ ở góc thẻ để lưu nhé.'); return; }
         vocabList = [...savedWords];
         openGameScreen(`⭐ Các từ đã lưu (${vocabList.length} từ)`);
       } else if(type === 'wrong') {
@@ -865,7 +786,6 @@
       else if(mode === 'typing') { document.getElementById('typingGame').classList.add('active'); initTyping(); }
     }
 
-    // --- MODE 1: FLASHCARD ---
     let cardIdx = 0;
     function updateCard() {
       document.getElementById('cardElement').classList.remove('flipped');
@@ -889,7 +809,6 @@
       updateCard();
     }
 
-    // --- MODE 2: QUIZ ---
     let quizIdx = 0, quizScore = 0;
     function initQuiz() { quizIdx = 0; quizScore = 0; showNextQuizQuestion(); }
     function showNextQuizQuestion() {
@@ -935,7 +854,6 @@
       });
     }
 
-    // --- MODE 3: MATCHING ---
     let selectedCards = [];
     function initMatching() {
       const grid = document.getElementById('matchingGrid');
@@ -984,12 +902,11 @@
       });
     }
 
-    // --- MODE 4: TYPING ---
     let typeIdx = 0;
     function initTyping() { typeIdx = 0; showTypingWord(); }
     function showTypingWord() {
       if(typeIdx >= vocabList.length) {
-        document.getElementById('typingPrompt').innerText = '🎉 Bn đã gõ xong tất cả từ!';
+        document.getElementById('typingPrompt').innerText = '🎉 Bạn đã gõ xong tất cả từ!';
         document.getElementById('typingInput').style.display = 'none';
         return;
       }
@@ -1019,7 +936,6 @@
       }
     }
 
-    // Run app
     initApp();
   </script>
 </body>
