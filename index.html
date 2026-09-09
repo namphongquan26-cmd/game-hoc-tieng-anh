@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Bé Học Tiếng Anh cùng Mèo Miu Miu 🐱</title>
+  <title>Tiểu Bạch English Playland 🦊</title>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      --bg: linear-gradient(135deg, #a8edf0 0%, #fed6e3 100%);
-      --card-bg: rgba(255, 255, 255, 0.92);
+      --bg: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+      --card-bg: rgba(255, 255, 255, 0.94);
       --box-bg: #ffffff;
       --text: #2d3436;
-      --primary: #ff7675;
-      --secondary: #74b9ff;
+      --primary: #ff6b6b;
+      --secondary: #ff7675;
       --accent: #55efc4;
       --yellow: #ffeaa7;
       --purple: #a29bfe;
@@ -22,7 +22,7 @@
 
     body.dark-mode {
       --bg: linear-gradient(135deg, #1e272e 0%, #0f172a 100%);
-      --card-bg: rgba(30, 41, 59, 0.92);
+      --card-bg: rgba(30, 41, 59, 0.94);
       --box-bg: #1e293b;
       --text: #f8fafc;
       --border: #38bdf8;
@@ -63,8 +63,15 @@
       font-size: 0.9rem;
     }
 
-    .header { text-align: center; margin-bottom: 10px; }
-    .header h1 { font-family: 'Fredoka One', cursive; font-size: 2rem; color: #ff6b6b; text-shadow: 2px 2px 0px #fff; }
+    .header { text-align: center; margin-bottom: 10px; width: 100%; padding: 0 10px; }
+    .header h1 { 
+      font-family: 'Fredoka One', cursive; 
+      font-size: 1.8rem; 
+      color: #d63031; 
+      text-shadow: 2px 2px 0px #fff; 
+      line-height: 1.3;
+      word-break: break-word;
+    }
 
     .pet-section {
       width: 100%;
@@ -82,7 +89,7 @@
       position: relative;
     }
 
-    .cat-avatar-container {
+    .fox-avatar-container {
       position: relative;
       width: 110px;
       height: 110px;
@@ -92,22 +99,22 @@
       cursor: pointer;
     }
 
-    .cat-speech-bubble {
+    .fox-speech-bubble {
       position: absolute;
-      top: -35px;
+      top: -42px;
       left: 50%;
       transform: translateX(-50%);
-      background: #fdcb6e;
-      color: #2d3436;
+      background: #ff7675;
+      color: #fff;
       padding: 5px 12px;
       border-radius: 15px;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 800;
       white-space: nowrap;
       box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-      z-index: 10;
+      z-index: 20;
     }
-    .cat-speech-bubble::after {
+    .fox-speech-bubble::after {
       content: '';
       position: absolute;
       bottom: -6px;
@@ -115,11 +122,11 @@
       transform: translateX(-50%);
       border-width: 6px 6px 0;
       border-style: solid;
-      border-color: #fdcb6e transparent;
+      border-color: #ff7675 transparent;
     }
 
-    .cat-svg { width: 100px; height: 100px; transition: transform 0.2s; }
-    .cat-svg:hover { transform: scale(1.08); }
+    .fox-svg { width: 105px; height: 105px; transition: transform 0.2s; }
+    .fox-svg:hover { transform: scale(1.08); }
 
     .pet-stats {
       display: flex;
@@ -135,8 +142,6 @@
 
     .pet-actions { display: flex; gap: 8px; }
 
-    .sheet-input-box { display: none !important; }
-
     .btn {
       background: var(--primary);
       color: white;
@@ -145,7 +150,7 @@
       border-radius: 22px;
       font-weight: 800;
       cursor: pointer;
-      box-shadow: 0 4px 0 #d63031;
+      box-shadow: 0 4px 0 #c0392b;
       transition: all 0.2s;
       display: inline-flex;
       align-items: center;
@@ -155,10 +160,12 @@
     }
     .btn:hover { transform: translateY(-2px); }
     .btn:active { transform: translateY(2px); box-shadow: none; }
-    .btn-sec { background: var(--secondary); box-shadow: 0 4px 0 #0984e3; }
+    .btn-sec { background: var(--secondary); box-shadow: 0 4px 0 #d63031; }
     .btn-green { background: var(--accent); color: #2d3436; box-shadow: 0 4px 0 #00b894; }
     .btn-yellow { background: #fdcb6e; color: #2d3436; box-shadow: 0 4px 0 #e17055; }
     .btn-dark { background: #636e72; box-shadow: 0 4px 0 #2d3436; }
+    .btn-purple { background: var(--purple); color: white; box-shadow: 0 4px 0 #6c5ce7; }
+    .btn-pink { background: #fd79a8; color: white; box-shadow: 0 4px 0 #e84393; }
 
     .container {
       width: 100%;
@@ -237,6 +244,14 @@
       background: var(--box-bg); color: var(--text);
     }
 
+    .scramble-letters { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 15px 0; }
+    .letter-tile {
+      background: var(--yellow); color: #d63031; width: 45px; height: 45px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 900;
+      cursor: pointer; box-shadow: 0 4px 0 #e17055;
+    }
+    .letter-tile:active { transform: translateY(2px); box-shadow: none; }
+
     .feedback { font-size: 1.1rem; font-weight: 800; margin: 10px 0; min-height: 28px; }
     .score-board { font-size: 1.05rem; font-weight: 800; color: #6c5ce7; margin-bottom: 8px; }
 
@@ -246,7 +261,7 @@
       display: none; justify-content: center; align-items: center; z-index: 1000;
     }
     .modal-content {
-      background: var(--box-bg); width: 92%; max-width: 500px; border-radius: 25px;
+      background: var(--box-bg); width: 92%; max-width: 550px; border-radius: 25px;
       padding: 20px; color: var(--text); box-shadow: 0 15px 35px rgba(0,0,0,0.2);
       max-height: 85vh; overflow-y: auto;
     }
@@ -261,19 +276,19 @@
 
     @media screen and (max-width: 600px) {
       body { padding: 8px; }
-      .header h1 { font-size: 1.6rem; }
+      .header h1 { font-size: 1.5rem; }
       .top-bar { gap: 5px; justify-content: center; }
       .badge { padding: 4px 10px; font-size: 0.8rem; }
       #darkBtn { font-size: 0.8rem; padding: 5px 12px; }
       .pet-section { padding: 12px 10px; gap: 10px; border-radius: 20px; }
-      .cat-avatar-container { width: 90px; height: 90px; }
-      .cat-svg { width: 85px; height: 85px; }
+      .fox-avatar-container { width: 90px; height: 90px; }
+      .fox-svg { width: 90px; height: 90px; }
       .container { padding: 14px; border-radius: 20px; }
       .matching-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
       .match-card { min-height: 55px; padding: 8px 4px; font-size: 0.82rem; }
       .quiz-options { grid-template-columns: 1fr; gap: 8px; }
       .quiz-btn { padding: 10px; font-size: 0.95rem; }
-      .mode-select .btn { padding: 6px 12px; font-size: 0.82rem; }
+      .mode-select .btn { padding: 6px 10px; font-size: 0.78rem; }
       .topics-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
       .topic-card { padding: 10px 3px; }
       .topic-icon { font-size: 1.5rem; }
@@ -293,59 +308,73 @@
   </div>
 
   <div class="header">
-    <h1>🎈 Miu Miu English Playland 🎈</h1>
+    <h1>🦊 Tiểu Bạch English Playland 🦊</h1>
   </div>
 
-  <!-- PET SECTION -->
+  <!-- PET SECTION (HỒ LY TRẮNG CHÓT TAI & ĐUÔI ĐỎ) -->
   <div class="pet-section">
-    <div class="cat-avatar-container" onclick="clickCat()">
-      <div class="cat-speech-bubble" id="catBubble">Meow~ Học bài tích xu mua cá cho Miu Miu nha!</div>
-      <svg class="cat-svg" viewBox="0 0 100 100">
-        <path d="M 20 75 Q 5 60 10 40 Q 15 35 18 45 Q 12 60 25 70 Z" fill="#ff9f43"/>
-        <ellipse cx="50" cy="70" rx="25" ry="20" fill="#ff9f43"/>
-        <ellipse cx="50" cy="72" rx="16" ry="14" fill="#fff3e0"/>
-        <circle cx="50" cy="42" r="22" fill="#ff9f43"/>
-        <polygon points="32,25 24,8 42,21" fill="#ff9f43"/>
-        <polygon points="34,24 27,12 40,21" fill="#ffaa5b"/>
-        <polygon points="68,25 76,8 58,21" fill="#ff9f43"/>
-        <polygon points="66,24 73,12 60,21" fill="#ffaa5b"/>
-        <g id="catEyesNormal">
-          <circle cx="41" cy="39" r="3.5" fill="#2d3436"/>
-          <circle cx="59" cy="39" r="3.5" fill="#2d3436"/>
-          <circle cx="42" cy="38" r="1.2" fill="#ffffff"/>
-          <circle cx="60" cy="38" r="1.2" fill="#ffffff"/>
+    <div class="fox-avatar-container" onclick="clickFox()">
+      <div class="fox-speech-bubble" id="foxBubble">Kyu~ Học bài tích xu mua đùi gà cho Tiểu Bạch nha!</div>
+      <svg class="fox-svg" viewBox="0 0 100 100">
+        <!-- Đuôi hồ ly trắng chóp đỏ -->
+        <path d="M 15 75 Q 0 50 15 35 Q 25 30 28 42 Q 18 55 25 70 Z" fill="#ffffff" stroke="#e74c3c" stroke-width="1.5"/>
+        <path d="M 15 35 Q 8 40 12 48 Q 20 45 22 40 Z" fill="#e74c3c"/>
+
+        <!-- Thân hồ ly trắng -->
+        <ellipse cx="50" cy="72" rx="22" ry="18" fill="#ffffff" stroke="#dfe6e9" stroke-width="1"/>
+        
+        <!-- Đầu hồ ly trắng hình tam giác mềm mại -->
+        <polygon points="50,28 30,55 70,55" fill="#ffffff" stroke="#dfe6e9" stroke-width="1"/>
+        <ellipse cx="50" cy="50" rx="18" ry="15" fill="#ffffff"/>
+
+        <!-- Tai hồ ly trắng chót đỏ -->
+        <polygon points="34,35 20,10 40,26" fill="#ffffff" stroke="#e74c3c" stroke-width="1.5"/>
+        <polygon points="28,20 20,10 32,18" fill="#e74c3c"/>
+
+        <polygon points="66,35 80,10 60,26" fill="#ffffff" stroke="#e74c3c" stroke-width="1.5"/>
+        <polygon points="72,20 80,10 68,18" fill="#e74c3c"/>
+
+        <!-- Mắt hồ ly -->
+        <g id="foxEyesNormal">
+          <circle cx="43" cy="46" r="3" fill="#2d3436"/>
+          <circle cx="57" cy="46" r="3" fill="#2d3436"/>
+          <circle cx="44" cy="45" r="1" fill="#ffffff"/>
+          <circle cx="58" cy="45" r="1" fill="#ffffff"/>
         </g>
-        <g id="catEyesHappy" style="display: none;">
-          <path d="M 37 40 Q 41 34 45 40" stroke="#2d3436" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-          <path d="M 55 40 Q 59 34 63 40" stroke="#2d3436" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <g id="foxEyesHappy" style="display: none;">
+          <path d="M 40 47 Q 43 42 46 47" stroke="#2d3436" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M 54 47 Q 57 42 60 47" stroke="#2d3436" stroke-width="2.5" fill="none" stroke-linecap="round"/>
         </g>
-        <g id="catEyesSad" style="display: none;">
-          <path d="M 37 36 L 45 41" stroke="#2d3436" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M 63 36 L 55 41" stroke="#2d3436" stroke-width="2.5" stroke-linecap="round"/>
+        <g id="foxEyesSad" style="display: none;">
+          <path d="M 40 44 L 46 48" stroke="#2d3436" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M 60 44 L 54 48" stroke="#2d3436" stroke-width="2.5" stroke-linecap="round"/>
         </g>
-        <polygon points="48,44 52,44 50,47" fill="#ff7675"/>
-        <path d="M 50 47 Q 46 51 43 49 M 50 47 Q 54 51 57 49" stroke="#2d3436" stroke-width="1.5" fill="none"/>
-        <line x1="25" y1="41" x2="35" y1="42" stroke="#2d3436" stroke-width="1"/>
-        <line x1="24" y1="46" x2="35" y1="45" stroke="#2d3436" stroke-width="1"/>
-        <line x1="75" y1="41" x2="65" y1="42" stroke="#2d3436" stroke-width="1"/>
-        <line x1="76" y1="46" x2="65" y1="45" stroke="#2d3436" stroke-width="1"/>
+
+        <!-- Mũi và miệng -->
+        <polygon points="48,51 52,51 50,54" fill="#e74c3c"/>
+        <path d="M 50 54 Q 47 57 44 56 M 50 54 Q 53 57 56 56" stroke="#2d3436" stroke-width="1.5" fill="none"/>
+
+        <!-- Phụ kiện trang trí -->
         <g id="accGlasses" style="display: none;">
-          <rect x="32" y="34" width="16" height="10" rx="3" fill="none" stroke="#2d3436" stroke-width="2.5"/>
-          <rect x="52" y="34" width="16" height="10" rx="3" fill="none" stroke="#2d3436" stroke-width="2.5"/>
-          <line x1="48" y1="38" x2="52" y1="38" stroke="#2d3436" stroke-width="2"/>
+          <rect x="34" y="40" width="14" height="10" rx="3" fill="none" stroke="#2d3436" stroke-width="2.5"/>
+          <rect x="52" y="40" width="14" height="10" rx="3" fill="none" stroke="#2d3436" stroke-width="2.5"/>
+          <line x1="48" y1="44" x2="52" y1="44" stroke="#2d3436" stroke-width="2"/>
         </g>
         <g id="accCrown" style="display: none;">
-          <polygon points="38,22 42,12 47,19 50,10 53,19 58,12 62,22" fill="#f1c40f" stroke="#f39c12" stroke-width="1"/>
+          <polygon points="38,26 42,16 47,22 50,13 53,22 58,16 62,26" fill="#f1c40f" stroke="#f39c12" stroke-width="1"/>
         </g>
         <g id="accHat" style="display: none;">
-          <rect x="33" y="18" width="18" height="3" fill="#2c3e50"/>
-          <rect x="37" y="6" width="10" height="12" fill="#2c3e50"/>
-          <rect x="37" y="15" width="10" height="3" fill="#e74c3c"/>
+          <rect x="33" y="22" width="18" height="3" fill="#2c3e50"/>
+          <rect x="37" y="10" width="10" height="13" fill="#2c3e50"/>
+          <rect x="37" y="19" width="10" height="3" fill="#e74c3c"/>
         </g>
         <g id="accBow" style="display: none;">
           <polygon points="42,62 50,65 42,68" fill="#e84393"/>
           <polygon points="58,62 50,65 58,68" fill="#e84393"/>
           <circle cx="50" cy="65" r="2.5" fill="#ff7675"/>
+        </g>
+        <g id="accGem" style="display: none;">
+          <circle cx="50" cy="64" r="5" fill="#00cec9" stroke="#00b894" stroke-width="1.5"/>
         </g>
       </svg>
     </div>
@@ -366,15 +395,11 @@
     </div>
   </div>
 
-  <div class="sheet-input-box">
-    <input type="text" id="sheetIdInput">
-  </div>
-
   <div class="container">
     <div id="topicScreen">
       <div class="special-topics">
         <button class="btn btn-yellow" onclick="openSpecialTopic('saved')">⭐ Ôn Các Từ Đã Lưu</button>
-        <button class="btn" style="background:#ff7675; box-shadow:0 4px 0 #d63031;" onclick="openSpecialTopic('wrong')">❌ Ôn Các Từ Hay Sai</button>
+        <button class="btn btn-sec" onclick="openSpecialTopic('wrong')">❌ Ôn Các Từ Hay Sai</button>
       </div>
 
       <h2 style="text-align:center; margin-bottom: 15px; color: var(--primary);">Chọn Chủ Đề Học 🎯</h2>
@@ -385,15 +410,20 @@
       <button class="btn btn-sec" onclick="showTopicScreen()" style="float: left;">⬅ Trở về</button>
       <h2 id="currentTopicTitle" style="margin-bottom: 15px; text-align: center;">Chủ đề 1</h2>
 
+      <!-- THANH CHỌN CHẾ ĐỘ CHƠI (TÍCH HỢP TOÀN BỘ) -->
       <div class="mode-select">
         <button class="btn" onclick="startMode('flashcard')">🃏 Lật Thẻ</button>
         <button class="btn btn-green" onclick="startMode('quiz')">❓ Trắc Nghiệm</button>
-        <button class="btn" style="background:#a29bfe; box-shadow:0 4px 0 #6c5ce7" onclick="startMode('matching')">🧩 Ghép Đôi</button>
-        <button class="btn" style="background:#fd79a8; box-shadow:0 4px 0 #e84393" onclick="startMode('typing')">✍️ Gõ Từ</button>
+        <button class="btn btn-purple" onclick="startMode('matching')">🧩 Ghép Đôi</button>
+        <button class="btn btn-pink" onclick="startMode('typing')">✍️ Gõ Từ</button>
+        <button class="btn btn-yellow" onclick="startMode('listening')">🎧 Nghe & Chọn</button>
+        <button class="btn btn-sec" onclick="startMode('scramble')">🔤 Sắp Xếp Chữ</button>
+        <button class="btn btn-dark" onclick="startMode('timeattack')">⚡ Phản Xạ Nhanh</button>
       </div>
 
       <div class="score-board" id="scoreBoard"></div>
 
+      <!-- 1. Lật thẻ -->
       <div id="flashcardGame" class="game-box">
         <div style="position: relative; display: inline-block; width: 100%; max-width: 300px;">
           <button class="star-btn" id="starBtn" onclick="toggleSaveCurrentWord()">☆</button>
@@ -410,17 +440,20 @@
         </div>
       </div>
 
+      <!-- 2. Trắc nghiệm -->
       <div id="quizGame" class="game-box">
         <h3 id="quizQuestion" style="font-size: 1.6rem; color: #0984e3; margin: 15px 0;">Question</h3>
         <div class="quiz-options" id="quizOptions"></div>
         <div class="feedback" id="quizFeedback"></div>
       </div>
 
+      <!-- 3. Ghép đôi -->
       <div id="matchingGame" class="game-box">
         <p style="margin-bottom: 10px; font-weight: 800;">Chọn 1 từ tiếng Anh và 1 nghĩa tương ứng!</p>
         <div class="matching-grid" id="matchingGrid"></div>
       </div>
 
+      <!-- 4. Gõ từ -->
       <div id="typingGame" class="game-box">
         <p>Nghĩa tiếng Việt là:</p>
         <h3 id="typingPrompt" style="font-size: 1.6rem; color: #e84393; margin: 10px 0;">Nghĩa</h3>
@@ -429,35 +462,81 @@
         <button class="btn btn-green" onclick="checkTyping()">Kiểm Tra 🚀</button>
         <div class="feedback" id="typingFeedback"></div>
       </div>
+
+      <!-- 5. Nghe & Chọn (Listening Quiz) -->
+      <div id="listeningGame" class="game-box">
+        <h3 style="margin: 10px 0; color: #00b894;">🎧 Nghe phát âm và chọn nghĩa đúng!</h3>
+        <button class="btn btn-yellow" style="font-size: 1.2rem; padding: 12px 25px; margin: 10px 0;" onclick="speakCurrentWord()">🔊 Phát Âm Lại</button>
+        <div class="quiz-options" id="listeningOptions"></div>
+        <div class="feedback" id="listeningFeedback"></div>
+      </div>
+
+      <!-- 6. Sắp xếp chữ cái (Word Scramble) -->
+      <div id="scrambleGame" class="game-box">
+        <p>Sắp xếp các chữ cái thành từ tiếng Anh đúng cho nghĩa:</p>
+        <h3 id="scrambleMeaning" style="font-size: 1.4rem; color: #e17055; margin: 10px 0;">Nghĩa</h3>
+        <div class="scramble-letters" id="scrambleSelected"></div>
+        <hr style="border: 1px dashed #b2bec3; width: 60%; margin: 10px auto;">
+        <div class="scramble-letters" id="scramblePool"></div>
+        <div style="margin-top: 10px;">
+          <button class="btn btn-sec" onclick="resetScramble()">Xóa lại 🔄</button>
+          <button class="btn btn-green" onclick="checkScramble()">Kiểm tra ✨</button>
+        </div>
+        <div class="feedback" id="scrambleFeedback"></div>
+      </div>
+
+      <!-- 7. Phản xạ nhanh (Time Attack) -->
+      <div id="timeAttackGame" class="game-box">
+        <h3 style="color: #d63031; margin-bottom: 5px;">⚡ Thử Thách 30 Giây ⚡</h3>
+        <div class="badge" style="display:inline-block; font-size: 1.1rem; margin-bottom: 10px;">⏱️ Thời gian: <span id="timerCount">30</span>s</div>
+        <h3 id="taQuestion" style="font-size: 1.5rem; color: #0984e3; margin: 10px 0;">Question</h3>
+        <div class="quiz-options" id="taOptions"></div>
+        <button class="btn btn-green" id="taStartBtn" style="margin-top: 15px; font-size: 1.1rem;" onclick="startTimeAttack()">Bắt Đầu Ngay 🚀</button>
+        <div class="feedback" id="taFeedback"></div>
+      </div>
+
     </div>
   </div>
 
+  <!-- SHOP VẬT PHẨM & PHỤ KIỆN -->
   <div class="modal-overlay" id="shopModal">
     <div class="modal-content">
       <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h2>🛍️ Cửa Hàng Pet Shop</h2>
+        <h2>🛍️ Cửa Hàng Tiểu Bạch</h2>
         <button class="btn btn-dark" onclick="closeShop()">✕ Đóng</button>
       </div>
-      <p style="margin-top: 5px;">Dùng Xu 🪙 từ bài học để chăm sóc Miu Miu nhé!</p>
+      <p style="margin-top: 5px;">Dùng Xu 🪙 để mua đồ ăn và trang bị phụ kiện cho Tiểu Bạch nhé!</p>
 
       <div class="shop-grid">
         <div class="shop-item">
-          <div class="shop-item-icon">🐟</div>
-          <div class="shop-item-title">Cá Ngừ</div>
+          <div class="shop-item-icon">🍗</div>
+          <div class="shop-item-title">Đùi Gà Nướng</div>
           <div class="shop-item-price">20 Xu (+30 No)</div>
-          <button class="btn btn-green" onclick="buyFood('fish', 20, 30)">Mua 🐟</button>
+          <button class="btn btn-green" onclick="buyFood('chicken', 20, 30)">Mua 🍗</button>
         </div>
         <div class="shop-item">
-          <div class="shop-item-icon">🥛</div>
-          <div class="shop-item-title">Sữa Tươi</div>
+          <div class="shop-item-icon">🍡</div>
+          <div class="shop-item-title">Bánh Dango</div>
           <div class="shop-item-price">15 Xu (+20 No)</div>
-          <button class="btn btn-green" onclick="buyFood('milk', 15, 20)">Mua 🥛</button>
+          <button class="btn btn-green" onclick="buyFood('dango', 15, 20)">Mua 🍡</button>
         </div>
         <div class="shop-item">
-          <div class="shop-item-icon">🍰</div>
-          <div class="shop-item-title">Bánh Kem</div>
-          <div class="shop-item-price">30 Xu (+40 No/Vui)</div>
-          <button class="btn btn-green" onclick="buyFood('cake', 30, 40)">Mua 🍰</button>
+          <div class="shop-item-icon">🍣</div>
+          <div class="shop-item-title">Cơm Cuộn Sushi</div>
+          <div class="shop-item-price">30 Xu (+35 No)</div>
+          <button class="btn btn-green" onclick="buyFood('sushi', 30, 35)">Mua 🍣</button>
+        </div>
+        <div class="shop-item">
+          <div class="shop-item-icon">🍵</div>
+          <div class="shop-item-title">Trà Xanh Thanh Mát</div>
+          <div class="shop-item-price">15 Xu (+15 No/Vui)</div>
+          <button class="btn btn-green" onclick="buyFood('tea', 15, 15)">Mua 🍵</button>
+        </div>
+        <div class="shop-item">
+          <div class="shop-item-icon">🎀</div>
+          <div class="shop-item-title">Nơ Cổ Đỏ</div>
+          <div class="shop-item-price">40 Xu</div>
+          <button class="btn btn-yellow" id="btnAccBow" onclick="buyOrEquip('bow', 40)">Mua 🎀</button>
         </div>
         <div class="shop-item">
           <div class="shop-item-icon">🕶️</div>
@@ -472,16 +551,10 @@
           <button class="btn btn-yellow" id="btnAccCrown" onclick="buyOrEquip('crown', 100)">Mua 👑</button>
         </div>
         <div class="shop-item">
-          <div class="shop-item-icon">🎩</div>
-          <div class="shop-item-title">Nón Ảo Thuật</div>
+          <div class="shop-item-icon">🔮</div>
+          <div class="shop-item-title">Ngọc Hồ Ly Linh Khí</div>
           <div class="shop-item-price">80 Xu</div>
-          <button class="btn btn-yellow" id="btnAccHat" onclick="buyOrEquip('hat', 80)">Mua 🎩</button>
-        </div>
-        <div class="shop-item">
-          <div class="shop-item-icon">🎀</div>
-          <div class="shop-item-title">Nơ Dễ Thương</div>
-          <div class="shop-item-price">40 Xu</div>
-          <button class="btn btn-yellow" id="btnAccBow" onclick="buyOrEquip('bow', 40)">Mua 🎀</button>
+          <button class="btn btn-yellow" id="btnAccGem" onclick="buyOrEquip('gem', 80)">Mua 🔮</button>
         </div>
       </div>
     </div>
@@ -491,16 +564,16 @@
     const DEFAULT_SHEET_ID = '12uCvxbX09mwJiCFCV2dMLuvx6KLM0d2RBUbHyg3_Ogw';
 
     let SHEET_ID = localStorage.getItem('user_sheet_id') || DEFAULT_SHEET_ID;
-    let coins = parseInt(localStorage.getItem('cat_coins') || '50');
+    let coins = parseInt(localStorage.getItem('fox_coins') || '50');
     let totalScore = parseInt(localStorage.getItem('total_score') || '0');
     let savedWords = JSON.parse(localStorage.getItem('saved_words') || '[]');
     let wrongWords = JSON.parse(localStorage.getItem('wrong_words') || '[]');
     let isDarkMode = localStorage.getItem('dark_mode') === 'true';
 
-    let catHunger = parseInt(localStorage.getItem('cat_hunger') || '80');
-    let catJoy = parseInt(localStorage.getItem('cat_joy') || '80');
-    let catInventory = JSON.parse(localStorage.getItem('cat_inventory') || '[]');
-    let catEquipped = JSON.parse(localStorage.getItem('cat_equipped') || '[]');
+    let foxHunger = parseInt(localStorage.getItem('fox_hunger') || '80');
+    let foxJoy = parseInt(localStorage.getItem('fox_joy') || '80');
+    let foxInventory = JSON.parse(localStorage.getItem('fox_inventory') || '[]');
+    let foxEquipped = JSON.parse(localStorage.getItem('fox_equipped') || '[]');
 
     let vocabList = [];
     let currentTopicIndex = 0;
@@ -527,11 +600,11 @@
         gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
         osc.start(); osc.stop(audioCtx.currentTime + 0.3);
-      } else if(type === 'meow') {
+      } else if(type === 'kyu') {
         osc.type = 'sine';
-        osc.frequency.setValueAtTime(400, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.15);
-        osc.frequency.exponentialRampToValueAtTime(500, audioCtx.currentTime + 0.35);
+        osc.frequency.setValueAtTime(500, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(900, audioCtx.currentTime + 0.15);
+        osc.frequency.exponentialRampToValueAtTime(600, audioCtx.currentTime + 0.35);
         gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
         osc.start(); osc.stop(audioCtx.currentTime + 0.4);
@@ -546,8 +619,6 @@
 
     function initApp() {
       if(isDarkMode) document.body.classList.add('dark-mode');
-      const input = document.getElementById('sheetIdInput');
-      if(input) input.value = SHEET_ID;
       updateHeaderBadges();
       updatePetUI();
       initTopicGrid();
@@ -566,7 +637,7 @@
       document.getElementById('savedCount').innerText = savedWords.length;
       document.getElementById('wrongCount').innerText = wrongWords.length;
 
-      localStorage.setItem('cat_coins', coins);
+      localStorage.setItem('fox_coins', coins);
       localStorage.setItem('total_score', totalScore);
       localStorage.setItem('saved_words', JSON.stringify(savedWords));
       localStorage.setItem('wrong_words', JSON.stringify(wrongWords));
@@ -575,7 +646,7 @@
     function addReward(scorePts, coinPts) {
       totalScore += scorePts;
       coins += coinPts;
-      catJoy = Math.min(100, catJoy + 2);
+      foxJoy = Math.min(100, foxJoy + 2);
       updateHeaderBadges();
       updatePetUI();
     }
@@ -585,51 +656,52 @@
         wrongWords.push(item);
         updateHeaderBadges();
       }
-      setCatMood('sad', 'Cố lên bạn ơi! Thử lại câu này nhé Meow~');
+      setFoxMood('sad', 'Cố lên bạn ơi! Thử lại câu này nhé Kyu~');
     }
 
     function removeWrongWord(item) {
       wrongWords = wrongWords.filter(w => w.en.toLowerCase() !== item.en.toLowerCase());
       updateHeaderBadges();
-      setCatMood('happy', 'Giỏi quá! +10 Xu 🪙 nè Meow~');
+      setFoxMood('happy', 'Giỏi quá! +10 Xu 🪙 nè Kyu~');
     }
 
     function updatePetUI() {
-      document.getElementById('hungerBar').style.width = catHunger + '%';
-      document.getElementById('joyBar').style.width = catJoy + '%';
+      document.getElementById('hungerBar').style.width = foxHunger + '%';
+      document.getElementById('joyBar').style.width = foxJoy + '%';
 
-      localStorage.setItem('cat_hunger', catHunger);
-      localStorage.setItem('cat_joy', catJoy);
-      localStorage.setItem('cat_inventory', JSON.stringify(catInventory));
-      localStorage.setItem('cat_equipped', JSON.stringify(catEquipped));
+      localStorage.setItem('fox_hunger', foxHunger);
+      localStorage.setItem('fox_joy', foxJoy);
+      localStorage.setItem('fox_inventory', JSON.stringify(foxInventory));
+      localStorage.setItem('fox_equipped', JSON.stringify(foxEquipped));
 
-      document.getElementById('accGlasses').style.display = catEquipped.includes('glasses') ? 'block' : 'none';
-      document.getElementById('accCrown').style.display = catEquipped.includes('crown') ? 'block' : 'none';
-      document.getElementById('accHat').style.display = catEquipped.includes('hat') ? 'block' : 'none';
-      document.getElementById('accBow').style.display = catEquipped.includes('bow') ? 'block' : 'none';
+      document.getElementById('accGlasses').style.display = foxEquipped.includes('glasses') ? 'block' : 'none';
+      document.getElementById('accCrown').style.display = foxEquipped.includes('crown') ? 'block' : 'none';
+      document.getElementById('accHat').style.display = foxEquipped.includes('hat') ? 'block' : 'none';
+      document.getElementById('accBow').style.display = foxEquipped.includes('bow') ? 'block' : 'none';
+      document.getElementById('accGem').style.display = foxEquipped.includes('gem') ? 'block' : 'none';
 
       updateShopButtons();
     }
 
-    function setCatMood(mood, text) {
-      document.getElementById('catEyesNormal').style.display = (mood === 'normal') ? 'block' : 'none';
-      document.getElementById('catEyesHappy').style.display = (mood === 'happy') ? 'block' : 'none';
-      document.getElementById('catEyesSad').style.display = (mood === 'sad') ? 'block' : 'none';
-      if(text) document.getElementById('catBubble').innerText = text;
+    function setFoxMood(mood, text) {
+      document.getElementById('foxEyesNormal').style.display = (mood === 'normal') ? 'block' : 'none';
+      document.getElementById('foxEyesHappy').style.display = (mood === 'happy') ? 'block' : 'none';
+      document.getElementById('foxEyesSad').style.display = (mood === 'sad') ? 'block' : 'none';
+      if(text) document.getElementById('foxBubble').innerText = text;
 
       if(mood !== 'normal') {
         setTimeout(() => {
-          document.getElementById('catEyesNormal').style.display = 'block';
-          document.getElementById('catEyesHappy').style.display = 'none';
-          document.getElementById('catEyesSad').style.display = 'none';
+          document.getElementById('foxEyesNormal').style.display = 'block';
+          document.getElementById('foxEyesHappy').style.display = 'none';
+          document.getElementById('foxEyesSad').style.display = 'none';
         }, 2500);
       }
     }
 
-    function clickCat() {
-      playSound('meow');
-      catJoy = Math.min(100, catJoy + 5);
-      setCatMood('happy', 'Ngoan quá~ Meow meow! 💕');
+    function clickFox() {
+      playSound('kyu');
+      foxJoy = Math.min(100, foxJoy + 5);
+      setFoxMood('happy', 'Kyu kyū~ Yêu bạn nhất! 💕');
       updatePetUI();
     }
 
@@ -639,43 +711,43 @@
     function buyFood(type, price, hungerAmount) {
       if(coins < price) { alert('Bạn chưa đủ Xu 🪙 rồi! Hãy làm thêm câu hỏi để nhận thêm Xu nhé.'); return; }
       coins -= price;
-      catHunger = Math.min(100, catHunger + hungerAmount);
-      catJoy = Math.min(100, catJoy + 10);
+      foxHunger = Math.min(100, foxHunger + hungerAmount);
+      foxJoy = Math.min(100, foxJoy + 10);
       playSound('buy');
-      setCatMood('happy', 'Cảm ơn bạn! Món này ngon quá Meow~ 😋');
+      setFoxMood('happy', 'Ngon quá! Cảm ơn bạn nha Kyu~ 😋');
       updateHeaderBadges();
       updatePetUI();
     }
 
     function buyOrEquip(itemKey, price) {
-      if(!catInventory.includes(itemKey)) {
-        if(coins < price) { alert('Bạn chưa đủ Xu 🪙 để mua đồ trang trí này!'); return; }
+      if(!foxInventory.includes(itemKey)) {
+        if(coins < price) { alert('Bạn chưa đủ Xu 🪙 để mua món này!'); return; }
         coins -= price;
-        catInventory.push(itemKey);
-        catEquipped.push(itemKey);
+        foxInventory.push(itemKey);
+        foxEquipped.push(itemKey);
         playSound('buy');
-        setCatMood('happy', 'Miu Miu có đồ mới đẹp quá! ✨');
+        setFoxMood('happy', 'Tiểu Bạch có đồ mới đẹp quá! ✨');
       } else {
-        if(catEquipped.includes(itemKey)) {
-          catEquipped = catEquipped.filter(i => i !== itemKey);
+        if(foxEquipped.includes(itemKey)) {
+          foxEquipped = foxEquipped.filter(i => i !== itemKey);
         } else {
-          catEquipped.push(itemKey);
+          foxEquipped.push(itemKey);
         }
-        playSound('meow');
+        playSound('kyu');
       }
       updateHeaderBadges();
       updatePetUI();
     }
 
     function updateShopButtons() {
-      const accs = ['glasses', 'crown', 'hat', 'bow'];
+      const accs = ['bow', 'glasses', 'crown', 'gem'];
       accs.forEach(key => {
         const btn = document.getElementById('btnAcc' + key.charAt(0).toUpperCase() + key.slice(1));
         if(!btn) return;
-        if(!catInventory.includes(key)) {
+        if(!foxInventory.includes(key)) {
           btn.innerText = 'Mua ✨';
           btn.className = 'btn btn-yellow';
-        } else if(catEquipped.includes(key)) {
+        } else if(foxEquipped.includes(key)) {
           btn.innerText = 'Đang đeo (Tháo)';
           btn.className = 'btn btn-sec';
         } else {
@@ -692,7 +764,7 @@
         const card = document.createElement('div');
         const isUnlocked = (i === 1 || localStorage.getItem(`unlocked_topic_${i}`));
         card.className = `topic-card ${isUnlocked ? '' : 'locked'}`;
-        card.innerHTML = `<div class="topic-icon">${isUnlocked ? '📚' : '🔒'}</div><div class="topic-title">Chủ đề ${i}</div>`;
+        card.innerHTML = `<div class="topic-icon">${isUnlocked ? '🦊' : '🔒'}</div><div class="topic-title">Chủ đề ${i}</div>`;
         if (isUnlocked) card.onclick = () => selectTopic(i);
         else card.onclick = () => alert(`Chủ đề ${i} đang khóa! Tạo tab "Chủ đề ${i}" trong Google Sheet để mở khóa.`);
         grid.appendChild(card);
@@ -770,12 +842,13 @@
     }
 
     function showTopicScreen() {
+      if(taTimer) clearInterval(taTimer);
       document.getElementById('topicScreen').style.display = 'block';
       document.getElementById('gameScreen').style.display = 'none';
       initTopicGrid();
     }
 
-    function hideAllGames() { document.querySelectorAll('.game-box').forEach(el => el.classList.remove('active')); }
+    function hideAllGames() { document.querySelectorAll('.game-box').forEach(el => el.classList.remove('active')); if(taTimer) clearInterval(taTimer); }
 
     function startMode(mode) {
       hideAllGames();
@@ -784,8 +857,12 @@
       else if(mode === 'quiz') { document.getElementById('quizGame').classList.add('active'); initQuiz(); }
       else if(mode === 'matching') { document.getElementById('matchingGame').classList.add('active'); initMatching(); }
       else if(mode === 'typing') { document.getElementById('typingGame').classList.add('active'); initTyping(); }
+      else if(mode === 'listening') { document.getElementById('listeningGame').classList.add('active'); initListening(); }
+      else if(mode === 'scramble') { document.getElementById('scrambleGame').classList.add('active'); initScramble(); }
+      else if(mode === 'timeattack') { document.getElementById('timeAttackGame').classList.add('active'); resetTimeAttackUI(); }
     }
 
+    // 1. Flashcard
     let cardIdx = 0;
     function updateCard() {
       document.getElementById('cardElement').classList.remove('flipped');
@@ -799,7 +876,6 @@
     function flipCard() { document.getElementById('cardElement').classList.toggle('flipped'); }
     function prevCard() { if(cardIdx > 0) { cardIdx--; updateCard(); } }
     function nextCard() { if(cardIdx < vocabList.length - 1) { cardIdx++; updateCard(); } }
-
     function toggleSaveCurrentWord() {
       const current = vocabList[cardIdx];
       const idx = savedWords.findIndex(w => w.en.toLowerCase() === current.en.toLowerCase());
@@ -809,6 +885,7 @@
       updateCard();
     }
 
+    // 2. Quiz
     let quizIdx = 0, quizScore = 0;
     function initQuiz() { quizIdx = 0; quizScore = 0; showNextQuizQuestion(); }
     function showNextQuizQuestion() {
@@ -854,6 +931,7 @@
       });
     }
 
+    // 3. Matching
     let selectedCards = [];
     function initMatching() {
       const grid = document.getElementById('matchingGrid');
@@ -902,6 +980,7 @@
       });
     }
 
+    // 4. Typing
     let typeIdx = 0;
     function initTyping() { typeIdx = 0; showTypingWord(); }
     function showTypingWord() {
@@ -916,7 +995,6 @@
       document.getElementById('scoreBoard').innerText = `Từ ${typeIdx + 1} / ${vocabList.length}`;
       document.getElementById('typingPrompt').innerText = vocabList[typeIdx].vi;
     }
-
     function checkTyping() {
       const input = document.getElementById('typingInput').value.trim().toLowerCase();
       const current = vocabList[typeIdx];
@@ -934,6 +1012,198 @@
         playSound('wrong');
         document.getElementById('typingFeedback').innerHTML = `<span style="color:#d63031">Gợi ý: ${target}</span>`;
       }
+    }
+
+    // 5. Listening (Nghe & Chọn)
+    let listenIdx = 0;
+    function initListening() { listenIdx = 0; showNextListening(); }
+    function speakCurrentWord() {
+      if('speechSynthesis' in window) {
+        const current = vocabList[listenIdx];
+        const utterance = new SpeechSynthesisUtterance(current.en);
+        utterance.lang = 'en-US';
+        window.speechSynthesis.speak(utterance);
+      } else {
+        alert('Trình duyệt không hỗ trợ phát âm thanh tự động.');
+      }
+    }
+    function showNextListening() {
+      if(listenIdx >= vocabList.length) {
+        document.getElementById('listeningFeedback').innerText = '🎉 Hoàn thành bài Nghe!';
+        document.getElementById('listeningOptions').innerHTML = '';
+        return;
+      }
+      document.getElementById('listeningFeedback').innerText = '';
+      document.getElementById('scoreBoard').innerText = `Câu ${listenIdx + 1}/${vocabList.length}`;
+      const current = vocabList[listenIdx];
+      speakCurrentWord();
+
+      let options = [current.vi];
+      while(options.length < Math.min(4, vocabList.length)) {
+        let rand = vocabList[Math.floor(Math.random()*vocabList.length)].vi;
+        if(!options.includes(rand)) options.push(rand);
+      }
+      options.sort(() => Math.random() - 0.5);
+
+      const optContainer = document.getElementById('listeningOptions');
+      optContainer.innerHTML = '';
+      options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'quiz-btn';
+        btn.innerText = opt;
+        btn.onclick = () => {
+          if(opt === current.vi) {
+            addReward(10, 10);
+            removeWrongWord(current);
+            playSound('correct');
+            document.getElementById('listeningFeedback').innerHTML = '<span style="color:#00b894">Chính xác! +10 Xu 🪙</span>';
+          } else {
+            addWrongWord(current);
+            playSound('wrong');
+            document.getElementById('listeningFeedback').innerHTML = `<span style="color:#d63031">Sai rồi! Đáp án là: ${current.vi}</span>`;
+          }
+          listenIdx++;
+          setTimeout(showNextListening, 1000);
+        };
+        optContainer.appendChild(btn);
+      });
+    }
+
+    // 6. Scramble (Sắp xếp chữ cái)
+    let scrIdx = 0, currentScrambleWord = '', userPickedLetters = [];
+    function initScramble() { scrIdx = 0; loadNextScramble(); }
+    function loadNextScramble() {
+      if(scrIdx >= vocabList.length) {
+        document.getElementById('scrambleMeaning').innerText = '🎉 Hoàn thành sắp xếp chữ!';
+        document.getElementById('scrambleSelected').innerHTML = '';
+        document.getElementById('scramblePool').innerHTML = '';
+        return;
+      }
+      document.getElementById('scrambleFeedback').innerText = '';
+      document.getElementById('scoreBoard').innerText = `Từ ${scrIdx + 1}/${vocabList.length}`;
+      currentScrambleWord = vocabList[scrIdx].en.toLowerCase();
+      document.getElementById('scrambleMeaning').innerText = vocabList[scrIdx].vi;
+      userPickedLetters = [];
+      renderScrambleTiles();
+    }
+    function renderScrambleTiles() {
+      const poolDiv = document.getElementById('scramblePool');
+      const selectedDiv = document.getElementById('scrambleSelected');
+      poolDiv.innerHTML = '';
+      selectedDiv.innerHTML = '';
+
+      userPickedLetters.forEach((l, idx) => {
+        const t = document.createElement('div');
+        t.className = 'letter-tile';
+        t.innerText = l.char.toUpperCase();
+        t.onclick = () => {
+          userPickedLetters.splice(idx, 1);
+          renderScrambleTiles();
+        };
+        selectedDiv.appendChild(t);
+      });
+
+      let chars = currentScrambleWord.replace(/\s+/g, '').split('').map((char, index) => ({ char, index }));
+      chars.sort(() => Math.random() - 0.5);
+
+      chars.forEach(item => {
+        const isUsed = userPickedLetters.some(u => u.origIndex === item.index);
+        const t = document.createElement('div');
+        t.className = 'letter-tile';
+        if(isUsed) { t.style.opacity = '0.3'; t.style.cursor = 'not-allowed'; }
+        t.innerText = item.char.toUpperCase();
+        if(!isUsed) {
+          t.onclick = () => {
+            userPickedLetters.push({ char: item.char, origIndex: item.index });
+            renderScrambleTiles();
+          };
+        }
+        poolDiv.appendChild(t);
+      });
+    }
+    function resetScramble() { userPickedLetters = []; renderScrambleTiles(); }
+    function checkScramble() {
+      const formed = userPickedLetters.map(u => u.char).join('');
+      const target = currentScrambleWord.replace(/\s+/g, '');
+      if(formed === target) {
+        addReward(15, 15);
+        removeWrongWord(vocabList[scrIdx]);
+        playSound('correct');
+        document.getElementById('scrambleFeedback').innerHTML = '<span style="color:#00b894">Chính xác! +15 Xu 🪙</span>';
+        scrIdx++;
+        setTimeout(loadNextScramble, 900);
+      } else {
+        playSound('wrong');
+        document.getElementById('scrambleFeedback').innerHTML = '<span style="color:#d63031">Chưa đúng, thử lại nhé!</span>';
+      }
+    }
+
+    // 7. Time Attack (Phản xạ nhanh 30s)
+    let taTimer = null, taScore = 0, taTimeLeft = 30;
+    function resetTimeAttackUI() {
+      if(taTimer) clearInterval(taTimer);
+      document.getElementById('taQuestion').style.display = 'none';
+      document.getElementById('taOptions').style.display = 'none';
+      document.getElementById('taStartBtn').style.display = 'inline-block';
+      document.getElementById('timerCount').innerText = '30';
+      document.getElementById('taFeedback').innerText = '';
+      document.getElementById('scoreBoard').innerText = 'Bấm bắt đầu để thử thách phản xạ!';
+    }
+    function startTimeAttack() {
+      taScore = 0;
+      taTimeLeft = 30;
+      document.getElementById('taStartBtn').style.display = 'none';
+      document.getElementById('taQuestion').style.display = 'block';
+      document.getElementById('taOptions').style.display = 'grid';
+      
+      nextTimeAttackQuestion();
+      taTimer = setInterval(() => {
+        taTimeLeft--;
+        document.getElementById('timerCount').innerText = taTimeLeft;
+        if(taTimeLeft <= 0) {
+          clearInterval(taTimer);
+          document.getElementById('taQuestion.style.display').display = 'none';
+          document.getElementById('taOptions').innerHTML = '';
+          document.getElementById('taStartBtn').style.display = 'inline-block';
+          document.getElementById('taStartBtn').innerText = 'Chơi Lại ⚡';
+          document.getElementById('taFeedback').innerHTML = `<span style="color:#6c5ce7">Hết giờ! Bạn đạt được ${taScore} điểm và nhận ${taScore} Xu thưởng 🎉</span>`;
+          addReward(taScore, taScore);
+        }
+      }, 1000);
+    }
+    function nextTimeAttackQuestion() {
+      if(taTimeLeft <= 0) return;
+      document.getElementById('taFeedback').innerText = '';
+      document.getElementById('scoreBoard').innerText = `Điểm phản xạ: ${taScore}`;
+      const current = vocabList[Math.floor(Math.random() * vocabList.length)];
+      document.getElementById('taQuestion').innerText = current.en;
+
+      let options = [current.vi];
+      while(options.length < Math.min(4, vocabList.length)) {
+        let rand = vocabList[Math.floor(Math.random()*vocabList.length)].vi;
+        if(!options.includes(rand)) options.push(rand);
+      }
+      options.sort(() => Math.random() - 0.5);
+
+      const optContainer = document.getElementById('taOptions');
+      optContainer.innerHTML = '';
+      options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'quiz-btn';
+        btn.innerText = opt;
+        btn.onclick = () => {
+          if(taTimeLeft <= 0) return;
+          if(opt === current.vi) {
+            taScore += 10;
+            playSound('correct');
+            nextTimeAttackQuestion();
+          } else {
+            playSound('wrong');
+            nextTimeAttackQuestion();
+          }
+        };
+        optContainer.appendChild(btn);
+      });
     }
 
     initApp();
