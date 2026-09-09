@@ -2,66 +2,11 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Bé Học Tiếng Anh cùng Mèo Miu Miu 🐱</title>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
   
   <style>
-    /* ==========================================
-       1. TẤT CẢ CSS CHÍNH (GIAO DIỆN CHUNG) CỦA BẠN DÁN Ở ĐÂY
-       ========================================== */
-
-
-
-
-    /* ==========================================
-       2. ÉP GIAO DIỆN MOBILE ĐẸP NÉT (MAX 600PX)
-       ========================================== */
-    @media screen and (max-width: 600px) {
-
-        /* --- 1. SỬA KHUNG SHEET ID --- */
-        div:has(> input), .input-group, .sheet-container {
-            display: flex !important;
-            flex-direction: column !important;
-            width: 100% !important;
-            gap: 8px !important;
-            align-items: stretch !important;
-        }
-
-        input[type="text"], input[placeholder*="Sheet"], button {
-            width: 100% !important;
-            max-width: 100% !important;
-            box-sizing: border-box !important;
-        }
-
-        div:has(> input) button {
-            height: 42px !important;
-            white-space: nowrap !important;
-        }
-
-
-        /* --- 2. SỬA GAME GHÉP ĐÔI THÀNH 2 CỘT --- */
-        div[style*="grid"], .grid-container, .card-grid, .matching-grid {
-            display: grid !important;
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 10px !important;
-        }
-
-        div[style*="grid"] button, .card, .card-btn {
-            min-height: 55px !important;
-            padding: 10px 6px !important;
-            font-size: 14px !important;
-            word-break: normal !important;
-        }
-
-        /* --- 3. SỬA NÚT TRỞ VỀ --- */
-        .header-bar, div:has(> button) {
-            flex-wrap: wrap !important;
-            justify-content: center !important;
-        }
-    }
-  </style>
-</head>
     :root {
       --bg: linear-gradient(135deg, #a8edf0 0%, #fed6e3 100%);
       --card-bg: rgba(255, 255, 255, 0.92);
@@ -91,7 +36,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 15px;
+      padding: 12px;
       color: var(--text);
     }
 
@@ -100,7 +45,7 @@
       width: 100%;
       max-width: 850px;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       margin-bottom: 12px;
       flex-wrap: wrap;
@@ -109,18 +54,18 @@
 
     .badge {
       background: var(--box-bg);
-      padding: 6px 14px;
+      padding: 6px 12px;
       border-radius: 20px;
       font-weight: 800;
       box-shadow: 0 4px 10px rgba(0,0,0,0.08);
       display: flex;
       align-items: center;
       gap: 5px;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
 
     .header { text-align: center; margin-bottom: 10px; }
-    .header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2rem; color: #ff6b6b; text-shadow: 2px 2px 0px #fff; }
+    .header h1 { font-family: 'Fredoka One', cursive; font-size: 2rem; color: #ff6b6b; text-shadow: 2px 2px 0px #fff; }
 
     /* PET CONTAINER SECTION */
     .pet-section {
@@ -141,8 +86,8 @@
 
     .cat-avatar-container {
       position: relative;
-      width: 120px;
-      height: 120px;
+      width: 110px;
+      height: 110px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -158,7 +103,7 @@
       color: #2d3436;
       padding: 5px 12px;
       border-radius: 15px;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 800;
       white-space: nowrap;
       box-shadow: 0 3px 8px rgba(0,0,0,0.15);
@@ -176,14 +121,14 @@
     }
 
     /* SVG Cat & Accessories */
-    .cat-svg { width: 110px; height: 110px; transition: transform 0.2s; }
+    .cat-svg { width: 100px; height: 100px; transition: transform 0.2s; }
     .cat-svg:hover { transform: scale(1.08); }
 
     .pet-stats {
       display: flex;
       flex-direction: column;
       gap: 8px;
-      min-width: 180px;
+      min-width: 160px;
     }
     .stat-bar-container { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 0.85rem; }
     .stat-bar { flex: 1; height: 12px; background: #dfe6e9; border-radius: 10px; overflow: hidden; }
@@ -193,28 +138,9 @@
 
     .pet-actions { display: flex; gap: 8px; }
 
-    /* SHEET INPUT BAR */
+    /* SHEET INPUT BAR (ẨN THEO YÊU CẦU) */
     .sheet-input-box {
-      background: var(--card-bg);
-      padding: 10px 18px;
-      border-radius: 30px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.06);
-      margin-bottom: 15px;
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      max-width: 850px;
-      width: 100%;
-    }
-    .sheet-input-box input {
-      flex: 1;
-      padding: 8px 15px;
-      border: 2px solid var(--secondary);
-      border-radius: 20px;
-      outline: none;
-      font-size: 0.88rem;
-      background: var(--box-bg);
-      color: var(--text);
+      display: none !important;
     }
 
     /* BUTTONS */
@@ -230,6 +156,7 @@
       transition: all 0.2s;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 5px;
       font-size: 0.9rem;
     }
@@ -247,7 +174,7 @@
       background: var(--card-bg);
       backdrop-filter: blur(10px);
       border-radius: 25px;
-      padding: 22px;
+      padding: 20px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
 
@@ -256,7 +183,7 @@
     /* TOPIC GRID */
     .topics-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
       gap: 12px;
     }
     .topic-card {
@@ -269,7 +196,7 @@
       border: 3px solid var(--border);
       transition: all 0.25s;
     }
-    .topic-card:hover:not(.locked) { transform: scale(1.06) rotate(-2deg); }
+    .topic-card:hover:not(.locked) { transform: scale(1.05); }
     .topic-card.locked { background: #dfe6e9; border-color: #b2bec3; cursor: not-allowed; opacity: 0.6; color: #636e72; }
     .topic-icon { font-size: 1.8rem; margin-bottom: 4px; }
     .topic-title { font-weight: 800; font-size: 0.88rem; }
@@ -280,7 +207,7 @@
     .mode-select { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 18px; }
 
     /* FLASHCARD */
-    .flashcard { width: 280px; height: 170px; margin: 15px auto; perspective: 1000px; cursor: pointer; }
+    .flashcard { width: 100%; max-width: 300px; height: 180px; margin: 15px auto; perspective: 1000px; cursor: pointer; }
     .flashcard-inner {
       width: 100%; height: 100%; position: relative; transform-style: preserve-3d;
       transition: transform 0.6s; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-radius: 20px;
@@ -289,7 +216,7 @@
     .card-front, .card-back {
       position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
       border-radius: 20px; display: flex; align-items: center; justify-content: center;
-      padding: 15px; font-size: 1.6rem; font-weight: 800;
+      padding: 15px; font-size: 1.5rem; font-weight: 800; word-break: break-word; text-align: center;
     }
     .card-front { background: #ffeaa7; color: #d63031; }
     .card-back { background: #74b9ff; color: white; transform: rotateY(180deg); }
@@ -300,26 +227,29 @@
     .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
     .quiz-btn {
       background: var(--box-bg); color: var(--text); border: 3px solid var(--secondary);
-      padding: 14px; border-radius: 15px; font-size: 1.05rem; font-weight: 800; cursor: pointer;
+      padding: 12px; border-radius: 15px; font-size: 1rem; font-weight: 800; cursor: pointer;
+      word-break: break-word;
     }
     .quiz-btn:hover { background: var(--secondary); color: white; }
 
     .matching-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 15px; }
     .match-card {
       background: var(--box-bg); color: var(--text); border: 2px solid var(--purple);
-      padding: 12px 5px; border-radius: 12px; font-weight: 800; font-size: 0.88rem;
-      cursor: pointer; min-height: 60px; display: flex; align-items: center; justify-content: center;
+      padding: 10px 6px; border-radius: 14px; font-weight: 800; font-size: 0.88rem;
+      cursor: pointer; min-height: 65px; display: flex; align-items: center; justify-content: center;
+      text-align: center; word-break: break-word; line-height: 1.25;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
     }
-    .match-card.selected { background: var(--yellow); border-color: #fdcb6e; color: #2d3436; }
-    .match-card.matched { visibility: hidden; }
+    .match-card.selected { background: var(--yellow); border-color: #fdcb6e; color: #2d3436; transform: scale(1.02); }
+    .match-card.matched { visibility: hidden; opacity: 0; pointer-events: none; }
 
     .typing-input {
-      padding: 10px 18px; font-size: 1.1rem; border-radius: 20px; border: 3px solid var(--primary);
-      text-align: center; margin: 15px 0; outline: none; width: 80%; max-width: 280px;
+      padding: 10px 18px; font-size: 1.05rem; border-radius: 20px; border: 3px solid var(--primary);
+      text-align: center; margin: 15px 0; outline: none; width: 90%; max-width: 300px;
       background: var(--box-bg); color: var(--text);
     }
 
-    .feedback { font-size: 1.15rem; font-weight: 800; margin: 10px 0; min-height: 28px; }
+    .feedback { font-size: 1.1rem; font-weight: 800; margin: 10px 0; min-height: 28px; }
     .score-board { font-size: 1.05rem; font-weight: 800; color: #6c5ce7; margin-bottom: 8px; }
 
     /* SHOP MODAL */
@@ -329,18 +259,71 @@
       display: none; justify-content: center; align-items: center; z-index: 1000;
     }
     .modal-content {
-      background: var(--box-bg); width: 90%; max-width: 500px; border-radius: 25px;
+      background: var(--box-bg); width: 92%; max-width: 500px; border-radius: 25px;
       padding: 20px; color: var(--text); box-shadow: 0 15px 35px rgba(0,0,0,0.2);
       max-height: 85vh; overflow-y: auto;
     }
-    .shop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 15px; }
+    .shop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
     .shop-item {
-      border: 2px solid var(--secondary); border-radius: 16px; padding: 12px; text-align: center;
+      border: 2px solid var(--secondary); border-radius: 16px; padding: 10px; text-align: center;
       background: var(--card-bg); display: flex; flex-direction: column; align-items: center; gap: 5px;
     }
-    .shop-item-icon { font-size: 2.2rem; }
-    .shop-item-title { font-weight: 800; font-size: 0.95rem; }
-    .shop-item-price { color: #e17055; font-weight: 900; font-size: 0.9rem; }
+    .shop-item-icon { font-size: 2rem; }
+    .shop-item-title { font-weight: 800; font-size: 0.9rem; }
+    .shop-item-price { color: #e17055; font-weight: 900; font-size: 0.85rem; }
+
+    /* ==========================================
+       TỐI ƯU DÀNH RIÊNG CHO DI ĐỘNG (MAX 600PX)
+       ========================================== */
+    @media screen and (max-width: 600px) {
+      body { padding: 8px; }
+
+      .header h1 { font-size: 1.6rem; }
+
+      .top-bar { gap: 5px; justify-content: center; }
+      .badge { padding: 4px 10px; font-size: 0.8rem; }
+      #darkBtn { font-size: 0.8rem; padding: 5px 12px; }
+
+      .pet-section { padding: 12px 10px; gap: 10px; border-radius: 20px; }
+      .cat-avatar-container { width: 90px; height: 90px; }
+      .cat-svg { width: 85px; height: 85px; }
+
+      .container { padding: 14px; border-radius: 20px; }
+
+      /* GAME GHÉP ĐÔI TRÊN MOBILE: BẮT BUỘC 2 CỘT */
+      .matching-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+      }
+      .match-card {
+        min-height: 55px;
+        padding: 8px 4px;
+        font-size: 0.82rem;
+      }
+
+      /* TRẮC NGHIỆM TRÊN MOBILE: 1 CỘT ĐỂ DỄ BẤM */
+      .quiz-options {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .quiz-btn {
+        padding: 10px;
+        font-size: 0.95rem;
+      }
+
+      .mode-select .btn {
+        padding: 6px 12px;
+        font-size: 0.82rem;
+      }
+
+      .topics-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+      .topic-card { padding: 10px 3px; }
+      .topic-icon { font-size: 1.5rem; }
+      .topic-title { font-size: 0.78rem; }
+    }
   </style>
 </head>
 <body>
@@ -441,11 +424,9 @@
     </div>
   </div>
 
-  <!-- SHEET ID INPUT -->
+  <!-- SHEET ID INPUT (ĐÃ ẨN) -->
   <div class="sheet-input-box">
-    <span>🔗 Sheet ID:</span>
-    <input type="text" id="sheetIdInput" placeholder="Dán Google Sheet ID vào đây...">
-    <button class="btn btn-sec" onclick="saveSheetId()">Lưu & Tải</button>
+    <input type="text" id="sheetIdInput">
   </div>
 
   <!-- MAIN CONTAINER -->
@@ -477,7 +458,7 @@
 
       <!-- Mode 1: Flashcard -->
       <div id="flashcardGame" class="game-box">
-        <div style="position: relative; display: inline-block;">
+        <div style="position: relative; display: inline-block; width: 100%; max-width: 300px;">
           <button class="star-btn" id="starBtn" onclick="toggleSaveCurrentWord()">☆</button>
           <div class="flashcard" id="cardElement" onclick="flipCard()">
             <div class="flashcard-inner">
@@ -494,21 +475,21 @@
 
       <!-- Mode 2: Quiz -->
       <div id="quizGame" class="game-box">
-        <h3 id="quizQuestion" style="font-size: 1.8rem; color: #0984e3; margin: 15px 0;">Question</h3>
+        <h3 id="quizQuestion" style="font-size: 1.6rem; color: #0984e3; margin: 15px 0;">Question</h3>
         <div class="quiz-options" id="quizOptions"></div>
         <div class="feedback" id="quizFeedback"></div>
       </div>
 
       <!-- Mode 3: Matching -->
       <div id="matchingGame" class="game-box">
-        <p>Chọn 1 từ tiếng Anh và 1 nghĩa tương ứng!</p>
+        <p style="margin-bottom: 10px; font-weight: 800;">Chọn 1 từ tiếng Anh và 1 nghĩa tương ứng!</p>
         <div class="matching-grid" id="matchingGrid"></div>
       </div>
 
       <!-- Mode 4: Typing -->
       <div id="typingGame" class="game-box">
         <p>Nghĩa tiếng Việt là:</p>
-        <h3 id="typingPrompt" style="font-size: 1.8rem; color: #e84393; margin: 10px 0;">Nghĩa</h3>
+        <h3 id="typingPrompt" style="font-size: 1.6rem; color: #e84393; margin: 10px 0;">Nghĩa</h3>
         <input type="text" id="typingInput" class="typing-input" placeholder="Gõ từ Tiếng Anh..." onkeyup="if(event.key==='Enter') checkTyping()">
         <br>
         <button class="btn btn-green" onclick="checkTyping()">Kiểm Tra 🚀</button>
@@ -582,7 +563,7 @@
 
     // --- LOCAL STORAGE DATA ---
     let SHEET_ID = localStorage.getItem('user_sheet_id') || DEFAULT_SHEET_ID;
-    let coins = parseInt(localStorage.getItem('cat_coins') || '50'); // Start with 50 coins gift
+    let coins = parseInt(localStorage.getItem('cat_coins') || '50');
     let totalScore = parseInt(localStorage.getItem('total_score') || '0');
     let savedWords = JSON.parse(localStorage.getItem('saved_words') || '[]');
     let wrongWords = JSON.parse(localStorage.getItem('wrong_words') || '[]');
@@ -640,7 +621,8 @@
     // --- INITIALIZE APP ---
     function initApp() {
       if(isDarkMode) document.body.classList.add('dark-mode');
-      document.getElementById('sheetIdInput').value = SHEET_ID;
+      const input = document.getElementById('sheetIdInput');
+      if(input) input.value = SHEET_ID;
       updateHeaderBadges();
       updatePetUI();
       initTopicGrid();
@@ -793,16 +775,6 @@
         if (isUnlocked) card.onclick = () => selectTopic(i);
         else card.onclick = () => alert(`Chủ đề ${i} đang khóa! Tạo tab "Chủ đề ${i}" trong Google Sheet để mở khóa.`);
         grid.appendChild(card);
-      }
-    }
-
-    function saveSheetId() {
-      const val = document.getElementById('sheetIdInput').value.trim();
-      if(val) {
-        SHEET_ID = val;
-        localStorage.setItem('user_sheet_id', val);
-        alert('Đã lưu Google Sheet ID!');
-        initTopicGrid();
       }
     }
 
