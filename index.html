@@ -1,5 +1,59 @@
 <!DOCTYPE html>
 <html lang="vi">
+  <style>
+/* ==========================================
+   ÉP GIAO DIỆN MOBILE ĐẸP NÉT (MAX 600PX)
+   ========================================== */
+@media screen and (max-width: 600px) {
+
+    /* --- 1. SỬA KHUNG SHEET ID --- */
+    /* Tim tat ca khung chua o nhap va ep xep thanh 1 cot */
+    div:has(> input), .input-group, .sheet-container {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 8px !important;
+        align-items: stretch !important;
+    }
+
+    /* O nhap ID va Nut Luu tu mo rong 100% width */
+    input[type="text"], input[placeholder*="Sheet"], button {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Nut Luu & Tai nam ngang dep mat */
+    div:has(> input) button {
+        height: 42px !important;
+        white-space: nowrap !important;
+    }
+
+
+    /* --- 2. SỬA GAME GHÉP ĐÔI THÀNH 2 CỘT --- */
+    /* Chuyen toan bo luoi the game tu 4 cot sang 2 cot rộng rai */
+    div[style*="grid"], .grid-container, .card-grid, .matching-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* Bat buoc 2 cot */
+        gap: 10px !important;
+    }
+
+    /* The game co do cao vua van, chu khong bi dung vertically */
+    div[style*="grid"] button, .card, .card-btn {
+        min-height: 55px !important;
+        padding: 10px 6px !important;
+        font-size: 14px !important;
+        word-break: normal !important;
+    }
+
+    /* --- 3. SỬA NÚT TRỞ VỀ --- */
+    /* Dua nut Tro ve va Tieu de thanh 2 hang rieng */
+    .header-bar, div:has(> button) {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+    }
+}
+</style>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -993,61 +1047,6 @@
 
     // Run app
     initApp();
-    /* ==========================================
-   FIX DỨT ĐIỂM 2 CHỖ LỖI GIAO DIỆN MOBILE
-   ========================================== */
-@media (max-width: 600px) {
-
-    /* --- FIX CHỖ 1: Khung Sheet ID & Nút Lưu & Tải --- */
-    /* Xếp Nhãn - Ô nhập - Nút Lưu thành các hàng dọc riêng biệt */
-    div:has(> input[placeholder*="Sheet"]), 
-    .sheet-input-container {
-        flex-direction: column !important;
-        align-items: stretch !important;
-        gap: 8px !important;
-    }
-
-    /* Giữ chữ "Sheet ID:" trên 1 hàng không ngắt dòng */
-    div:has(> input) span, label {
-        white-space: nowrap !important;
-        text-align: center !important;
-    }
-
-    /* Nút "Lưu & Tải" tự dàn rộng, chữ nằm ngang đẹp mắt */
-    div:has(> input) button {
-        width: 100% !important;
-        white-space: nowrap !important;
-        padding: 10px !important;
-        height: auto !important;
-    }
-
-    /* --- FIX CHỖ 2: Nút Trở Về & Lưới Thẻ Ghép Đôi --- */
-    /* 1. Nút "Trở về" xếp lên hàng trên, Tiêu đề nằm hàng dưới căn giữa */
-    div:has(> button:contains("Trở về")), 
-    .topic-title-bar {
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 10px !important;
-    }
-
-    /* 2. Chuyển game Ghép Đôi từ 4 CỘT sang 2 CỘT rộng rãi */
-    div[style*="grid-template-columns"], 
-    .matching-container, 
-    .cards-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 10px !important;
-    }
-
-    /* Thẻ game cao vừa dặn, chữ không bị đứt dòng vô lý */
-    div[style*="grid"] button, 
-    .card-item {
-        padding: 12px 8px !important;
-        min-height: 52px !important;
-        font-size: 14px !important;
-        line-height: 1.3 !important;
-        word-break: normal !important;
-    }
-}
   </script>
 </body>
 </html>
