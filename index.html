@@ -197,8 +197,7 @@
       background: var(--box-bg); border-radius: 16px; padding: 12px 4px; text-align: center;
       cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,0.04); border: 2.5px solid var(--border); transition: all 0.25s;
     }
-    .topic-card:hover:not(.locked) { transform: scale(1.04); }
-    .topic-card.locked { background: #dfe6e9; border-color: #b2bec3; cursor: not-allowed; opacity: 0.6; color: #636e72; }
+    .topic-card:hover { transform: scale(1.04); background: var(--yellow); }
     .topic-icon { font-size: 1.6rem; margin-bottom: 2px; }
     .topic-title { font-weight: 700; font-size: 0.82rem; }
 
@@ -315,7 +314,6 @@
 
     <div class="pet-actions">
       <button class="btn btn-yellow" onclick="openShop()">🛍️ Shop</button>
-      <button class="btn btn-purple" onclick="openConfigModal()" title="Cài đặt Google Sheet ID" style="padding: 7px 10px;">🔑</button>
     </div>
   </div>
 
@@ -487,19 +485,6 @@
     </div>
   </div>
 
-  <!-- Modal Cài đặt Google Sheet ID -->
-  <div class="modal-overlay" id="configModal">
-    <div class="modal-content" style="max-width: 400px; text-align: center;">
-      <h2>🔑 Cài Đặt Google Sheet</h2>
-      <p style="margin: 10px 0; font-size: 0.88rem;">Dán ID của Google Sheet của bạn vào đây để đồng bộ từ vựng:</p>
-      <input type="text" id="sheetIdInput" class="typing-input" placeholder="Nhập ID Sheet vào đây..." style="width: 100%; max-width: 100%;">
-      <div style="display: flex; gap: 8px; justify-content: center; margin-top: 12px;">
-        <button class="btn btn-green" onclick="saveSheetId()">Lưu Lại 💾</button>
-        <button class="btn btn-dark" onclick="closeConfigModal()">Đóng</button>
-      </div>
-    </div>
-  </div>
-
   <div id="toastMsg"></div>
 
   <script>
@@ -518,8 +503,8 @@
       question: ['https://lh3.googleusercontent.com/d/1rk3dNeS_VQ3wkVdCep_j_5k_xjol6XKa']
     };
 
-    const DEFAULT_SHEET_ID = '12uCvxbX09mwJiCFCV2dMLuvx6KLM0d2RBUbHyg3_Ogw';
-    let SHEET_ID = localStorage.getItem('user_sheet_id') || DEFAULT_SHEET_ID;
+    // Cố định thẳng ID Google Sheet của bạn vào đây cho nhẹ nhàng, không cần nút chìa khóa rườm rà
+    const SHEET_ID = '12uCvxbX09mwJiCFCV2dMLuvx6KLM0d2RBUbHyg3_Ogw';
 
     let coins = parseInt(localStorage.getItem('fox_coins') || '50');
     let totalScore = parseInt(localStorage.getItem('total_score') || '0');
@@ -697,22 +682,6 @@
     function openShop() { document.getElementById('shopModal').style.display = 'flex'; }
     function closeShop() { document.getElementById('shopModal').style.display = 'none'; }
 
-    function openConfigModal() {
-      document.getElementById('sheetIdInput').value = SHEET_ID;
-      document.getElementById('configModal').style.display = 'flex';
-    }
-    function closeConfigModal() { document.getElementById('configModal').style.display = 'none'; }
-
-    function saveSheetId() {
-      const val = document.getElementById('sheetIdInput').value.trim();
-      if(!val) { showToast('Vui lòng nhập ID Sheet hợp lệ!'); return; }
-      SHEET_ID = val;
-      localStorage.setItem('user_sheet_id', SHEET_ID);
-      closeConfigModal();
-      showToast('Đã lưu ID Google Sheet thành công! 🎉');
-      initTopicGrid();
-    }
-
     function buyFood(type, price, hungerAmount) {
       if(coins < price) { 
         setFoxMood('question', 'Chưa đủ xu rồi kìa!');
@@ -742,19 +711,15 @@
       updatePetUI();
     }
 
+    // Mở khóa toàn bộ 15 chủ đề trực tiếp không cần điều kiện
     function initTopicGrid() {
       const grid = document.getElementById('topicsGrid');
       grid.innerHTML = '';
       for (let i = 1; i <= totalTopics; i++) {
         const card = document.createElement('div');
-        const isUnlocked = (i === 1 || localStorage.getItem(`unlocked_topic_${i}`));
-        card.className = `topic-card ${isUnlocked ? '' : 'locked'}`;
-        card.innerHTML = `<div class="topic-icon">${isUnlocked ? '🦊' : '🔒'}</div><div class="topic-title">Chủ đề ${i}</div>`;
-        if (isUnlocked) card.onclick = () => selectTopic(i);
-        else card.onclick = () => {
-          setFoxMood('question', `Chủ đề ${i} đang bị khóa!`);
-          showToast(`Chủ đề ${i} đang khóa! Thêm vào Google Sheet để mở.`);
-        };
+        card.className = 'topic-card';
+        card.innerHTML = `<div class="topic-icon">🦊</div><div class="topic-title">Chủ đề ${i}</div>`;
+        card.onclick = () => selectTopic(i);
         grid.appendChild(card);
       }
     }
@@ -768,7 +733,6 @@
         const parsed = parseCSV(text);
         if (parsed.length > 0) {
           vocabList = parsed;
-          localStorage.setItem(`unlocked_topic_${topicNum}`, 'true');
           return true;
         }
       } catch (e) { console.error(e); }
@@ -806,9 +770,9 @@
     async function selectTopic(num) {
       currentTopicIndex = num;
       const success = await loadDataFromSheet(num);
-      if(!success) { 
-        setFoxMood('question', 'Chưa có dữ liệu bài này!');
-        showToast(`Chưa tìm thấy tab "Chủ đề ${num}" trong Sheet.`); 
+      if(!success || vocabList.length === 0) { 
+        setFoxMood('question', `Chủ đề ${num} chưa có từ vựng!`);
+        showToast(`Chủ đề ${num} chưa có từ vựng, hãy nhập thêm từ vào Sheet nhé!`); 
         return; 
       }
       openGameScreen(`Chủ đề ${num} (${vocabList.length} từ)`);
