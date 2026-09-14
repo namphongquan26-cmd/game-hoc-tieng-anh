@@ -131,27 +131,20 @@
     .fox-svg { width: 95px; height: 95px; transition: transform 0.3s ease; }
     .fox-svg:hover { transform: scale(1.06); }
 
-    /* HIỆU ỨNG BIỂU CẢM BÉ HỒ LY */
-    .fox-anim-happy {
-      animation: foxBounce 0.6s ease infinite alternate;
-    }
+    .fox-anim-happy { animation: foxBounce 0.6s ease infinite alternate; }
     @keyframes foxBounce {
       0% { transform: translateY(0) scale(1); }
       100% { transform: translateY(-12px) scale(1.05) rotate(3deg); }
     }
 
-    .fox-anim-sad {
-      animation: foxShake 0.5s ease;
-    }
+    .fox-anim-sad { animation: foxShake 0.5s ease; }
     @keyframes foxShake {
       0%, 100% { transform: translateX(0) rotate(0); }
       20%, 60% { transform: translateX(-6px) rotate(-4deg); }
       40%, 80% { transform: translateX(6px) rotate(4deg); }
     }
 
-    .fox-anim-eat {
-      animation: foxChew 0.4s ease 3;
-    }
+    .fox-anim-eat { animation: foxChew 0.4s ease 3; }
     @keyframes foxChew {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.12, 0.92); }
@@ -175,6 +168,8 @@
     .stat-fill { height: 100%; width: 100%; transition: width 0.4s ease; }
     .fill-hunger { background: #ff7675; }
     .fill-joy { background: #fdcb6e; }
+
+    .pet-actions { display: flex; gap: 6px; align-items: center; }
 
     .btn {
       background: var(--primary); color: white; border: none; padding: 7px 14px;
@@ -304,7 +299,6 @@
   <div class="pet-section">
     <div class="fox-avatar-container" onclick="clickFox()">
       <div class="fox-speech-bubble" id="foxBubble">Kyu~ Mua đùi gà cho mình nhé!</div>
-      <!-- BÉ HỒ LY TIỂU BẠCH -->
       <img src="https://lh3.googleusercontent.com/d/1KwNqNr_6yTAdG-eDwpAQYvqjqarlPPks" alt="Tiểu Bạch" class="fox-svg" style="object-fit: contain;">
     </div>
 
@@ -321,6 +315,7 @@
 
     <div class="pet-actions">
       <button class="btn btn-yellow" onclick="openShop()">🛍️ Shop</button>
+      <button class="btn btn-purple" onclick="openConfigModal()" title="Cài đặt Google Sheet ID" style="padding: 7px 10px;">🔑</button>
     </div>
   </div>
 
@@ -351,7 +346,6 @@
 
       <div class="score-board" id="scoreBoard"></div>
 
-      <!-- Games -->
       <div id="flashcardGame" class="game-box">
         <div style="position: relative; display: inline-block; width: 100%; max-width: 280px;">
           <button class="star-btn" id="starBtn" onclick="toggleSaveCurrentWord()">☆</button>
@@ -419,6 +413,7 @@
     </div>
   </div>
 
+  <!-- Modal Shop -->
   <div class="modal-overlay" id="shopModal">
     <div class="modal-content">
       <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -452,7 +447,6 @@
           <div class="shop-item-price">15 Xu (+15 No/Vui)</div>
           <button class="btn btn-green" onclick="buyFood('tea', 15, 15)">Mua 🍵</button>
         </div>
-        <!-- VẬT PHẨM MỚI BỔ SUNG -->
         <div class="shop-item">
           <div class="shop-item-icon">🍜</div>
           <div class="shop-item-title">Mì Ramen Nóng Hổi</div>
@@ -493,14 +487,24 @@
     </div>
   </div>
 
+  <!-- Modal Cài đặt Google Sheet ID -->
+  <div class="modal-overlay" id="configModal">
+    <div class="modal-content" style="max-width: 400px; text-align: center;">
+      <h2>🔑 Cài Đặt Google Sheet</h2>
+      <p style="margin: 10px 0; font-size: 0.88rem;">Dán ID của Google Sheet của bạn vào đây để đồng bộ từ vựng:</p>
+      <input type="text" id="sheetIdInput" class="typing-input" placeholder="Nhập ID Sheet vào đây..." style="width: 100%; max-width: 100%;">
+      <div style="display: flex; gap: 8px; justify-content: center; margin-top: 12px;">
+        <button class="btn btn-green" onclick="saveSheetId()">Lưu Lại 💾</button>
+        <button class="btn btn-dark" onclick="closeConfigModal()">Đóng</button>
+      </div>
+    </div>
+  </div>
+
   <div id="toastMsg"></div>
 
   <script>
-    // === 1. KHO ẢNH TIỂU BẠCH PHÂN THEO 5 BIỂU CẢM ===
     const FOX_IMAGES = {
-      normal: [
-        'https://lh3.googleusercontent.com/d/1KwNqNr_6yTAdG-eDwpAQYvqjqarlPPks'
-      ],
+      normal: ['https://lh3.googleusercontent.com/d/1KwNqNr_6yTAdG-eDwpAQYvqjqarlPPks'],
       happy: [
         'https://lh3.googleusercontent.com/d/1R-efQgBMLbpMi-exXRdb1UdPcFKdmRsL',
         'https://lh3.googleusercontent.com/d/1p1d9VSynXE0DmtJRm3lqcEPfzbLkV5-Z',
@@ -509,20 +513,14 @@
         'https://lh3.googleusercontent.com/d/1pri6yrWV_CFFh75xK38rDNq-wQrjWdNM',
         'https://lh3.googleusercontent.com/d/1sAAyZ1y2y2dhJ_KKXD9O9mogKpt3tci1'
       ],
-      sad: [
-        'https://lh3.googleusercontent.com/d/1L_9MMMXbVWbn24XYOYslO_BvjWeaGqAk'
-      ],
-      eat: [
-        'https://lh3.googleusercontent.com/d/1OLC_3vCTF7BDZl-6ppFPAQ8TUgveyaBP'
-      ],
-      question: [
-        'https://lh3.googleusercontent.com/d/1rk3dNeS_VQ3wkVdCep_j_5k_xjol6XKa'
-      ]
+      sad: ['https://lh3.googleusercontent.com/d/1L_9MMMXbVWbn24XYOYslO_BvjWeaGqAk'],
+      eat: ['https://lh3.googleusercontent.com/d/1OLC_3vCTF7BDZl-6ppFPAQ8TUgveyaBP'],
+      question: ['https://lh3.googleusercontent.com/d/1rk3dNeS_VQ3wkVdCep_j_5k_xjol6XKa']
     };
 
     const DEFAULT_SHEET_ID = '12uCvxbX09mwJiCFCV2dMLuvx6KLM0d2RBUbHyg3_Ogw';
-
     let SHEET_ID = localStorage.getItem('user_sheet_id') || DEFAULT_SHEET_ID;
+
     let coins = parseInt(localStorage.getItem('fox_coins') || '50');
     let totalScore = parseInt(localStorage.getItem('total_score') || '0');
     let savedWords = JSON.parse(localStorage.getItem('saved_words') || '[]');
@@ -639,20 +637,17 @@
 
     function getRandomFoxImage(mood) {
       const list = FOX_IMAGES[mood] || FOX_IMAGES.normal;
-      const randomIndex = Math.floor(Math.random() * list.length);
-      return list[randomIndex];
+      return list[Math.floor(Math.random() * list.length)];
     }
 
     function spawnFoxEmoji(emojiSymbol) {
       const container = document.querySelector('.fox-avatar-container');
       if (!container) return;
-      
       const el = document.createElement('div');
       el.className = 'emoji-particle';
       el.innerText = emojiSymbol;
       el.style.left = (35 + Math.random() * 30) + '%';
       el.style.top = '10%';
-      
       container.appendChild(el);
       setTimeout(() => el.remove(), 1200);
     }
@@ -660,7 +655,6 @@
     function setFoxMood(mood, text) {
       const foxImg = document.querySelector('.fox-svg');
       const bubble = document.getElementById('foxBubble');
-      
       if (text && bubble) bubble.innerText = text;
       if (!foxImg) return;
 
@@ -703,6 +697,22 @@
     function openShop() { document.getElementById('shopModal').style.display = 'flex'; }
     function closeShop() { document.getElementById('shopModal').style.display = 'none'; }
 
+    function openConfigModal() {
+      document.getElementById('sheetIdInput').value = SHEET_ID;
+      document.getElementById('configModal').style.display = 'flex';
+    }
+    function closeConfigModal() { document.getElementById('configModal').style.display = 'none'; }
+
+    function saveSheetId() {
+      const val = document.getElementById('sheetIdInput').value.trim();
+      if(!val) { showToast('Vui lòng nhập ID Sheet hợp lệ!'); return; }
+      SHEET_ID = val;
+      localStorage.setItem('user_sheet_id', SHEET_ID);
+      closeConfigModal();
+      showToast('Đã lưu ID Google Sheet thành công! 🎉');
+      initTopicGrid();
+    }
+
     function buyFood(type, price, hungerAmount) {
       if(coins < price) { 
         setFoxMood('question', 'Chưa đủ xu rồi kìa!');
@@ -718,7 +728,6 @@
       updatePetUI();
     }
 
-    // Hàm mua đồ chơi tăng độ vui
     function buyToy(type, price, joyAmount) {
       if(coins < price) { 
         setFoxMood('question', 'Chưa đủ xu rồi kìa!');
