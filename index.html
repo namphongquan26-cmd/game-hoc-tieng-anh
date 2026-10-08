@@ -192,14 +192,14 @@
 
     .special-topics { display: flex; gap: 8px; margin-bottom: 15px; justify-content: center; flex-wrap: wrap; }
 
-    .topics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; }
+    .topics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px; }
     .topic-card {
-      background: var(--box-bg); border-radius: 16px; padding: 12px 4px; text-align: center;
+      background: var(--box-bg); border-radius: 16px; padding: 12px 6px; text-align: center;
       cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,0.04); border: 2.5px solid var(--border); transition: all 0.25s;
     }
     .topic-card:hover { transform: scale(1.04); background: var(--yellow); }
     .topic-icon { font-size: 1.6rem; margin-bottom: 2px; }
-    .topic-title { font-weight: 700; font-size: 0.82rem; }
+    .topic-title { font-weight: 700; font-size: 0.8rem; line-height: 1.2; word-break: break-word; }
 
     .game-box { display: none; text-align: center; }
     .active { display: block; }
@@ -503,8 +503,21 @@
       question: ['https://lh3.googleusercontent.com/d/1rk3dNeS_VQ3wkVdCep_j_5k_xjol6XKa']
     };
 
-    // Cố định thẳng ID Google Sheet của bạn vào đây cho nhẹ nhàng, không cần nút chìa khóa rườm rà
     const SHEET_ID = '12uCvxbX09mwJiCFCV2dMLuvx6KLM0d2RBUbHyg3_Ogw';
+
+    // Cấu hình 50 chủ đề: 6 chủ đề đầu khớp với tên Tab trên Sheet, từ 7-50 để dạng mặc định "Chủ đề X"
+    const TOPIC_NAMES = [
+      "Chủ đề 1: Quốc gia-quốc tịch",
+      "Chủ đề 2: Thứ, ngày, tháng",
+      "Chủ đề 3: Sinh hoạt",
+      "Chủ đề 4: HĐ giải trí",
+      "Chủ đề 5: Nghề nghiệp",
+      "Chủ đề 6: Từ viết tắt"
+    ];
+
+    for (let i = 7; i <= 50; i++) {
+      TOPIC_NAMES.push(`Chủ đề ${i}`);
+    }
 
     let coins = parseInt(localStorage.getItem('fox_coins') || '50');
     let totalScore = parseInt(localStorage.getItem('total_score') || '0');
@@ -517,7 +530,6 @@
 
     let vocabList = [];
     let currentTopicIndex = 0;
-    const totalTopics = 15;
 
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     function playSound(type) {
@@ -711,21 +723,24 @@
       updatePetUI();
     }
 
-    // Mở khóa toàn bộ 15 chủ đề trực tiếp không cần điều kiện
     function initTopicGrid() {
       const grid = document.getElementById('topicsGrid');
       grid.innerHTML = '';
-      for (let i = 1; i <= totalTopics; i++) {
+      TOPIC_NAMES.forEach((topicTitle, index) => {
+        const topicNum = index + 1;
         const card = document.createElement('div');
         card.className = 'topic-card';
-        card.innerHTML = `<div class="topic-icon">🦊</div><div class="topic-title">Chủ đề ${i}</div>`;
-        card.onclick = () => selectTopic(i);
+        card.innerHTML = `
+          <div class="topic-icon">🦊</div>
+          <div class="topic-title">${topicTitle}</div>
+        `;
+        card.onclick = () => selectTopic(topicNum, topicTitle);
         grid.appendChild(card);
-      }
+      });
     }
 
-    async function loadDataFromSheet(topicNum) {
-      const sheetName = encodeURIComponent(`Chủ đề ${topicNum}`);
+    async function loadDataFromSheet(sheetTitle) {
+      const sheetName = encodeURIComponent(sheetTitle);
       const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${sheetName}`;
       try {
         const res = await fetch(url);
@@ -737,17 +752,6 @@
         }
       } catch (e) { console.error(e); }
       
-      if(topicNum === 1) {
-        vocabList = [
-          { en: "Human Resources", vi: "Nhân sự" },
-          { en: "Corporate Culture", vi: "Văn hóa doanh nghiệp" },
-          { en: "Recruitment", vi: "Tuyển dụng" },
-          { en: "Interview", vi: "Phỏng vấn" },
-          { en: "Training", vi: "Đào tạo" },
-          { en: "Employee", vi: "Nhân viên" }
-        ];
-        return true;
-      }
       return false;
     }
 
@@ -767,15 +771,15 @@
       return list;
     }
 
-    async function selectTopic(num) {
+    async function selectTopic(num, topicTitle) {
       currentTopicIndex = num;
-      const success = await loadDataFromSheet(num);
+      const success = await loadDataFromSheet(topicTitle);
       if(!success || vocabList.length === 0) { 
-        setFoxMood('question', `Chủ đề ${num} chưa có từ vựng!`);
-        showToast(`Chủ đề ${num} chưa có từ vựng, hãy nhập thêm từ vào Sheet nhé!`); 
+        setFoxMood('question', `Chưa có từ vựng!`);
+        showToast(`Tab "${topicTitle}" chưa có dữ liệu trên Google Sheet!`); 
         return; 
       }
-      openGameScreen(`Chủ đề ${num} (${vocabList.length} từ)`);
+      openGameScreen(`${topicTitle} (${vocabList.length} từ)`);
     }
 
     function openSpecialTopic(type) {
